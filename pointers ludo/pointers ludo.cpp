@@ -1,11 +1,5 @@
 // pointers ludo.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
-#include <iostream>
-
-// ludo board.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <windows.h>
 using namespace std;
@@ -194,69 +188,37 @@ void PrintBoard(char** B, int Dim, int R, int C)
         {
             if (!HollowBox(ri, ci))
             {
-                if (/*(ri + ci) % 2 == 0*/ri <= 5 && ci <= 5)
+                if (ri <= 5 && ci <= 5)
                 {
-                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                    {
-                        CLR = 4;
-                    }
-                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
-                    {
-                        CLR = 8;
-                    }*/
+                   
                     SetClr(4);
                     DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (/*(ri + ci) % 2 == 0*/(ci > 7 && ci <= 14) && ri <= 5)
+                else if ((ci > 7 && ci <= 14) && ri <= 5)
                 {
-                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                    {
-                        CLR = 4;
-                    }
-                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
-                    {
-                        CLR = 8;
-                    }*/
+                   
                     SetClr(6);
                     DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (/*(ri + ci) % 2 == 0*/(ri > 7 && ri <= 14) && ci <= 5)
+                else if ((ri > 7 && ri <= 14) && ci <= 5)
                 {
-                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                    {
-                        CLR = 4;
-                    }
-                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
-                    {
-                        CLR = 8;
-                    }*/
+         
                     SetClr(1);
                     DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (/*(ri + ci) % 2 == 0*/(ci > 7 && ci <= 14) && ri > 5)
+                else if ((ci > 7 && ci <= 14) && ri > 5)
                 {
-                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                    {
-                        CLR = 4;
-                    }
-                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
-                    {
-                        CLR = 8;
-                    }*/
                     SetClr(2);
                     DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
                 else
                 {
-                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                    {
-                        CLR = 4;
-                    }
-                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
-                    {
-                        CLR = 8;
-                    }*/
                     SetClr(12);
+                    DrawBox(ri * R, ci * C, R, C, ri, ci);
+                }
+                if (ri > 5 && ri < 7 || ci>5 && ci < 9)
+                {
+                    SetClr(13);
                     DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
             }
@@ -280,4 +242,5 @@ int main()
     char** B;
     init(B);
     PrintBoard(B, 15, 6, 6);
+    return 0;
 }
