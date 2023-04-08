@@ -40,11 +40,20 @@ void SetClr(int clr)
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), clr);
 }
 
-bool ValidBox(int i, int j)
+bool CentralBox(int i, int j)
 {
     if ((i >= 6 && i <= 8) && (j >= 6 && j <= 8))
     {
-        return false;
+        SetClr(0);
+        return true;
+    }
+}
+bool ValidBox(int i, int j)
+{
+    if ((i == 6 || i == 8) && (j == 6 || j == 8))
+    {
+        SetClr(15);
+        return true;
     }
     if (i == 6)
     {
@@ -98,6 +107,32 @@ bool ValidBox(int i, int j)
             return true;
         }
     }
+    if (i == 7)
+    {
+        if (j >= 1 && j <= 6)
+        {
+            SetClr(4);
+            return true;
+        }
+        if (j >= 8 && j < 14)
+        {
+            SetClr(2);
+            return true;
+        }
+    }
+    if (j == 7)
+    {
+        if (i >= 1 && i <= 6)
+        {
+            SetClr(6);
+            return true;
+        }
+        if (i >= 8 && i < 14)
+        {
+            SetClr(1);
+            return true;
+        }
+    }
     if (i == 6 || i == 7 || j == 6 || j == 7 || i == 8 || j == 8)
     {
         return true;
@@ -110,7 +145,7 @@ bool HollowBox(int i, int j)
         return true;
     return false;
 }
-void DrawBox(int Sc, int Dc, int R, int C, int i, int j/*, int n, int CLR, char sym, char s, char hs*/)
+void DrawBox(int Sc, int Dc, int R, int C, int i, int j)
 {
     for (int ri = 0; ri < R; ri++)
     {
