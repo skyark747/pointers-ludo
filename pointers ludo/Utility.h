@@ -1,5 +1,5 @@
 #pragma once
-class Utility
-{
-};
 
+void getRowColbyLeftClick(int& rpos, int& cpos);
+void gotoRowCol(int rpos, int cpos);
+void SetClr(int clr);
