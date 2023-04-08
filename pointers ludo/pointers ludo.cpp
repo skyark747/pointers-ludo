@@ -104,6 +104,12 @@ bool ValidBox(int i, int j)
     }
     return false;
 }
+bool HollowBox(int i, int j)
+{
+    if ((i == 1 && j == 1) || (i == 4 && j == 1) || (j == 4 && i == 1) || (i == 4 && j == 4) || (i == 1 && j == 10) || (i == 1 && j == 13) || (i == 4 && j == 10) || (i == 4 && j == 13))
+        return true;
+    return false;
+}
 void DrawBox(int Sc, int Dc, int R, int C, int i, int j/*, int n, int CLR, char sym, char s, char hs*/)
 {
     for (int ri = 0; ri < R; ri++)
@@ -151,70 +157,73 @@ void PrintBoard(char** B, int Dim, int R, int C)
     {
         for (int ci = 0; ci < Dim; ci++)
         {
-            if (/*(ri + ci) % 2 == 0*/ri <= 5 && ci <= 5)
+            if (!HollowBox(ri, ci))
             {
-                /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
+                if (/*(ri + ci) % 2 == 0*/ri <= 5 && ci <= 5)
                 {
-                    CLR = 4;
+                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
+                    {
+                        CLR = 4;
+                    }
+                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                    {
+                        CLR = 8;
+                    }*/
+                    SetClr(4);
+                    DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                else if (/*(ri + ci) % 2 == 0*/(ci > 7 && ci <= 14) && ri <= 5)
                 {
-                    CLR = 8;
-                }*/
-                SetClr(4);
-                DrawBox(ri * R, ci * C, R, C, ri, ci);
-            }
-            else if (/*(ri + ci) % 2 == 0*/(ci > 7 && ci <= 14) && ri <= 5)
-            {
-                /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                {
-                    CLR = 4;
+                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
+                    {
+                        CLR = 4;
+                    }
+                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                    {
+                        CLR = 8;
+                    }*/
+                    SetClr(6);
+                    DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                else if (/*(ri + ci) % 2 == 0*/(ri > 7 && ri <= 14) && ci <= 5)
                 {
-                    CLR = 8;
-                }*/
-                SetClr(6);
-                DrawBox(ri * R, ci * C, R, C, ri, ci);
-            }
-            else if (/*(ri + ci) % 2 == 0*/(ri > 7 && ri <= 14) && ci <= 5)
-            {
-                /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                {
-                    CLR = 4;
+                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
+                    {
+                        CLR = 4;
+                    }
+                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                    {
+                        CLR = 8;
+                    }*/
+                    SetClr(1);
+                    DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                else if (/*(ri + ci) % 2 == 0*/(ci > 7 && ci <= 14) && ri > 5)
                 {
-                    CLR = 8;
-                }*/
-                SetClr(1);
-                DrawBox(ri * R, ci * C, R, C, ri, ci);
-            }
-            else if (/*(ri + ci) % 2 == 0*/(ci > 7 && ci <= 14) && ri > 5)
-            {
-                /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                {
-                    CLR = 4;
+                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
+                    {
+                        CLR = 4;
+                    }
+                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                    {
+                        CLR = 8;
+                    }*/
+                    SetClr(2);
+                    DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                else
                 {
-                    CLR = 8;
-                }*/
-                SetClr(2);
-                DrawBox(ri * R, ci * C, R, C, ri, ci);
-            }
-            else
-            {
-                /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
-                {
-                    CLR = 4;
+                    /*if (B[ri][ci] >= 'a' && B[ri][ci] <= 'z')
+                    {
+                        CLR = 4;
+                    }
+                    else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
+                    {
+                        CLR = 8;
+                    }*/
+                    SetClr(12);
+                    DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
-                else if (B[ri][ci] >= 'A' && B[ri][ci] <= 'Z')
-                {
-                    CLR = 8;
-                }*/
-                SetClr(12);
-                DrawBox(ri * R, ci * C, R, C, ri, ci);
             }
         }
     }
