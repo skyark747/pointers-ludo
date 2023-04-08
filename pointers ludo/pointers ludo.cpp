@@ -181,6 +181,11 @@ void PrintBoard(char** B, int Dim, int R, int C)
                     SetClr(12);
                     DrawBox(ri * R, ci * C, R, C, ri, ci);
                 }
+                if (ri > 5 && ri < 7 || ci>5 && ci < 9)
+                {
+                    SetClr(13);
+                    DrawBox(ri * R, ci * C, R, C, ri, ci);
+                }
             }
         }
     }
@@ -197,14 +202,10 @@ void init(char**& B)
     }
 }
 
-int main1()
+int main()
 {
     char** B;
     init(B);
     PrintBoard(B, 15, 6, 6);
     return 0;
-}
-int main()
-{
-    main1();
 }
