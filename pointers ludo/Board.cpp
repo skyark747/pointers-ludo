@@ -4,6 +4,11 @@
 using namespace std;
 
 
+
+Piece* Board::getpiece(int r,int c)
+{
+    return P[r][c];
+}
 bool Board::CentralBox(int i, int j)
 {
     if ((i >= 6 && i <= 8) && (j >= 6 && j <= 8))

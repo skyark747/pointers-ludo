@@ -1,9 +1,7 @@
 #pragma once
 #include <string>
+#include "Utility.h"
 using namespace std;
-
-enum Color { RED, GREEN, YELLOW, BLUE };
-
 class Player
 {
 private:
