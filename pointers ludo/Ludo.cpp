@@ -14,7 +14,8 @@ Ludo::~Ludo()
 }
 void Ludo::Play()
 {
-	B->PrintBoard(); 
+	Board B{};
+	B.PrintBoard(); 
 	int r, c;
 	getRowColbyLeftClick(r, c);
 	std::cout << r << " " << c;
