@@ -1,10 +1,41 @@
 #include "Board.h"
 #include "Utility.h"
+#include "Player.h"
+#include "Redgiti.h"
 #include <iostream>
 using namespace std;
 
 
+Board::Board()
+{
+      this->P = new Piece * *[dim];
+    for (int i = 0; i < dim; i++)
+    {
+        this->P[i] = new Piece*[dim];
+        for (int j = 0; j < dim; j++)
+        {
+            if (i == 2 && j == 2 || i == 2 && j == 4)
+            {
+                this->P[i][j] = new Redgiti(RED, i, j, this, 'R');
+            }
+            else if (i == 4 && j == 2 || i == 4 && j == 4)
+            {
+                this->P[i][j] = new Redgiti(RED, i, j, this, 'R');
+            }
+            else if (i == 2 && j == 10 || i == 2 && j == 12)
+            {
+                this->P[i][j] = new Redgiti(RED, i, j, this, 'G');
+            }
+            else if (i == 4 && j == 10 || i == 4 && j == 12)
+            {
+                this->P[i][j] = new Redgiti(RED, i, j, this, 'G');
+            }
+            else
+                P[i][j] = nullptr;
 
+        }
+    }
+}
 Piece* Board::getpiece(int r,int c)
 {
     return P[r][c];
@@ -157,7 +188,17 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j)
 }
 void Board::PrintBoard()
 {
-    int clr = 8, Clr = 7, CLR = 15;
+    for (int ri = 0; ri < dim; ri++)
+    {
+        for (int ci = 0; ci < dim; ci++)
+        {
+            if (P[ri][ci] == nullptr)
+                cout << '-';
+            else
+                P[ri][ci]->draw();
+        }
+    }
+   /* int clr = 8, Clr = 7, CLR = 15;
     for (int ri = 0; ri < 15; ri++)
     {
         for (int ci = 0; ci < 15; ci++)
@@ -200,5 +241,5 @@ void Board::PrintBoard()
             }
         }
     }
-    SetClr(6);
+    SetClr(6);*/
 }

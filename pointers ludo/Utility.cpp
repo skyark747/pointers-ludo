@@ -3,7 +3,7 @@
 #include <Windows.h>
 using namespace std;
 
-enum Color { RED, GREEN, YELLOW, BLUE };
+
 void getRowColbyLeftClick(int& rpos, int& cpos)
 {
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);

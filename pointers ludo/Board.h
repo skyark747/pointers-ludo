@@ -2,12 +2,13 @@
 class Piece;
 class Board
 {
-	int dim = 15;
+protected:
+	int dim=15;
 	int R = 6;
 	int C = 6;
 	Piece*** P;
 public:
-	//Board();
+	Board();
 	void PrintBoard();
 	bool CentralBox(int i, int j);
 	bool ValidBox(int i, int j);
