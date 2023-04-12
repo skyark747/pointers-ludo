@@ -36,7 +36,7 @@
     <ClCompile Include="Dice.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Redgiti.cpp">
+    <ClCompile Include="Giti.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClInclude Include="Dice.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Redgiti.h">
+    <ClInclude Include="Giti.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

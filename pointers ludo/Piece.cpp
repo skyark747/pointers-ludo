@@ -16,3 +16,4 @@ Color Piece::getColor()
 	return this->clr;
 }
 
+

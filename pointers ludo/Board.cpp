@@ -1,7 +1,7 @@
 #include "Board.h"
 #include "Utility.h"
 #include "Player.h"
-#include "Redgiti.h"
+#include "Giti.h"
 #include <iostream>
 using namespace std;
 
@@ -16,38 +16,38 @@ Board::Board()
         {
             if (i == 1 && j == 1 || i == 1 && j == 4)
             {
-                this->P[i][j] = new Redgiti(RED, i, j, this, 'R');
+                this->P[i][j] = new Giti(RED, i, j, this, 'R');
             }
             else if (i == 4 && j == 1 || i == 4 && j == 4)
             {
-                this->P[i][j] = new Redgiti(RED, i, j, this, 'R');
+                this->P[i][j] = new Giti(RED, i, j, this, 'R');
             }
             else if (i == 1 && j == 10 || i == 1 && j == 13)
             {
-                this->P[i][j] = new Redgiti(RED, i, j, this, 'G');
+                this->P[i][j] = new Giti(GREEN, i, j, this, 'G');
             }
             else if (i == 4 && j == 10 || i == 4 && j == 13)
             {
-                this->P[i][j] = new Redgiti(RED, i, j, this, 'G');
+                this->P[i][j] = new Giti(GREEN, i, j, this, 'G');
             }
             else if ((i == 10 && j == 1) || (i == 13 && j == 1) || (i == 10 && j == 4) || (i == 13 && j == 4))
             {
-                this->P[i][j] = new Redgiti(RED, i, j, this, 'Y');
+                this->P[i][j] = new Giti(YELLOW, i, j, this, 'Y');
             }
             else if ((i == 10 && j == 10) || (i == 10 && j == 13) || (i == 13 && j == 10) || (i == 13 && j == 13))
             {
-                this->P[i][j] = new Redgiti(RED, i, j, this, 'B');
+                this->P[i][j] = new Giti(BLUE, i, j, this, 'B');
             }
             else if (((i >= 6 && i <= 8) && (j >= 6 && j <= 8)))
             {
-                this->P[i][j] = new Redgiti(RED, i, j, this, '*');
+                this->P[i][j] = new Giti(RED, i, j, this, '*');
             }
             else if (((i >= 6 && i <= 8) || (j >= 6 && j <= 8)))
             {
                 P[i][j] = nullptr;
             }
             else
-                this->P[i][j] = new Redgiti(RED, i, j, this, '*');
+                this->P[i][j] = new Giti(RED, i, j, this, '*');
 
         }
     }
