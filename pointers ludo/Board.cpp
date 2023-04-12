@@ -38,12 +38,16 @@ Board::Board()
             {
                 this->P[i][j] = new Redgiti(RED, i, j, this, 'B');
             }
-            else if ((i >= 6 && i <= 8) && (j <= 6 && j <= 8))
+            else if (((i >= 6 && i <= 8) && (j >= 6 && j <= 8)))
             {
                 this->P[i][j] = new Redgiti(RED, i, j, this, '*');
             }
-            else
+            else if (((i >= 6 && i <= 8) || (j >= 6 && j <= 8)))
+            {
                 P[i][j] = nullptr;
+            }
+            else
+                this->P[i][j] = new Redgiti(RED, i, j, this, '*');
 
         }
     }
