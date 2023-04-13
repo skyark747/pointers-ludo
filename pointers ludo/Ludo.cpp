@@ -26,7 +26,7 @@ void Ludo::Play()
 		cout << D.getdicevalue();
 		Board B{};
 		B.PrintBoard();
-		D.PrintDice(D.getdicevalue());
+		D.PrintDice(3/*D.getdicevalue()*/);
 		int r, c;
 		/*getRowColbyLeftClick(r, c);
 		std::cout << r << " " << c;*/

@@ -23,9 +23,9 @@ int Dice::getdicevalue()
 
 void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
 {
-    for (int ri = 0; ri < R; ri++)
+    for (int ri = 1; ri < R - 1 ; ri++)
     {
-        for (int ci = 0; ci < C; ci++)
+        for (int ci = 1; ci < C - 1; ci++)
         {
             if (n == 1)
             {
@@ -59,7 +59,7 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
             }
             else if (n == 3)
             {
-                if (ci == C / 2 && (ri == 1 || ri == 3 || ri == 5))
+                if (ri == ci && (ci==1 || ci == 2 || ci == 4))
                 {
                     SetClr(4);
                     gotoRowCol(ri + Sc, Dc + ci);
@@ -83,6 +83,7 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
                 }
                 else
                 {
+                    gotoRowCol(ri + Sc, Dc + ci);
                     cout << char(-37);
                 }
             }
