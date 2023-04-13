@@ -6,8 +6,8 @@ private:
 public:
 	Dice();
 	void rolldice();
-	void PrintDice();
-	void DrawBox(int Sc, int Dc, int R, int C, int n);
+	void PrintDice(int n);
+	void DrawBox(int Sc, int Dc, int R, int C, int n, int clr);
 	int getdicevalue();
 };
 
