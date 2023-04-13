@@ -80,7 +80,7 @@ bool Board::ValidBox(int i, int j)
         }
         if (j == 12)
         {
-            SetClr(6);
+            SetClr(1);
             return true;
         }
     }
@@ -88,12 +88,12 @@ bool Board::ValidBox(int i, int j)
     {
         if (j == 13)
         {
-            SetClr(2);
+            SetClr(1);
             return true;
         }
         if (j == 2)
         {
-            SetClr(1);
+            SetClr(4);
             return true;
         }
     }
@@ -101,12 +101,12 @@ bool Board::ValidBox(int i, int j)
     {
         if (i == 1)
         {
-            SetClr(6);
+            SetClr(2);
             return true;
         }
         if (i == 12)
         {
-            SetClr(2);
+            SetClr(6);
             return true;
         }
     }
@@ -114,12 +114,12 @@ bool Board::ValidBox(int i, int j)
     {
         if (i == 13)
         {
-            SetClr(1);
+            SetClr(6);
             return true;
         }
         if (i == 2)
         {
-            SetClr(4);
+            SetClr(2);
             return true;
         }
     }
@@ -132,7 +132,7 @@ bool Board::ValidBox(int i, int j)
         }
         if (j >= 8 && j < 14)
         {
-            SetClr(2);
+            SetClr(1);
             return true;
         }
     }
@@ -140,12 +140,12 @@ bool Board::ValidBox(int i, int j)
     {
         if (i >= 1 && i <= 6)
         {
-            SetClr(6);
+            SetClr(2);
             return true;
         }
         if (i >= 8 && i < 14)
         {
-            SetClr(1);
+            SetClr(6);
             return true;
         }
     }
@@ -162,7 +162,7 @@ bool Board::HollowBox(int i, int j)
         return true;
     return false;
 }
-void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j)
+void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr)
 {
     for (int ri = 0; ri < R; ri++)
     {
@@ -189,7 +189,21 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j)
             {
                 //SetClr(15);
                 gotoRowCol(ri + Sc, Dc + ci);
-                cout << char(-37);
+                if (P[i][j] == nullptr || P[i][j]->getSym()=='*')
+                    cout << char(-37);
+                else
+                {
+                    if (P[i][j]->getColor() == RED)
+                        SetClr(4);
+                    else if (P[i][j]->getColor() == GREEN)
+                        SetClr(2);
+                    else if (P[i][j]->getColor() == YELLOW)
+                        SetClr(6);
+                    else if (P[i][j]->getColor() == BLUE)
+                        SetClr(1);
+                    P[i][j]->draw();
+                    SetClr(clr);
+                }
                 //SetClr(n);
             }
             else
@@ -204,7 +218,7 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j)
 }
 void Board::PrintBoard()
 {
-    for (int ri = 0; ri < dim; ri++)
+   /*for (int ri = 0; ri < dim; ri++)
     {
         for (int ci = 0; ci < dim; ci++)
         {
@@ -214,8 +228,8 @@ void Board::PrintBoard()
                 P[ri][ci]->draw();
         }
         cout << endl;
-    }
-   /* int clr = 8, Clr = 7, CLR = 15;
+    }*/
+    int clr = 8, Clr = 7, CLR = 15;
     for (int ri = 0; ri < 15; ri++)
     {
         for (int ci = 0; ci < 15; ci++)
@@ -226,37 +240,42 @@ void Board::PrintBoard()
                 {
 
                     SetClr(4);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci);
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 4);
                 }
                 else if ((ci > 7 && ci <= 14) && ri <= 5)
                 {
 
-                    SetClr(6);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci);
+                    SetClr(2);
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 2);
                 }
                 else if ((ri > 7 && ri <= 14) && ci <= 5)
                 {
 
-                    SetClr(1);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci);
+                    SetClr(6);
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 6);
                 }
                 else if ((ci > 7 && ci <= 14) && ri > 5)
                 {
-                    SetClr(2);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci);
+                    SetClr(1);
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 1);
                 }
                 else
                 {
                     SetClr(12);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci);
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 12);
                 }
                 if (ri > 5 && ri < 7 || ci>5 && ci < 9)
                 {
                     SetClr(13);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci);
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 13);
                 }
+            }
+            else
+            {
+                SetClr(0);
+                DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 0);
             }
         }
     }
-    SetClr(6);*/
+    SetClr(6);
 }

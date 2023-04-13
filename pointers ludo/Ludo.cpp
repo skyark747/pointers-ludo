@@ -20,13 +20,11 @@ void Ludo::Play()
 	int a;
 	cin >> a;
 	Dice D;
-	system("cls");
-	gotoRowCol(20, 20);
 	D.rolldice();
-	cout << D.getdicevalue();
-	cin >> a;
+	gotoRowCol(0, 0);
 	Board B{};
-	B.PrintBoard(); 
+	B.PrintBoard();
+	D.PrintDice();
 	int r, c;
 	getRowColbyLeftClick(r, c);
 	std::cout << r << " " << c;

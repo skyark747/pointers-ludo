@@ -14,6 +14,7 @@ protected:
 public:
 	Piece(Color c, int sr, int sc,Board*Brd,char s);
 	Color getColor();
+	char getSym();
 	virtual void draw() = 0;
 };
 

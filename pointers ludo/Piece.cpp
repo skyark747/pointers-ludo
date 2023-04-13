@@ -15,5 +15,8 @@ Color Piece::getColor()
 {
 	return this->clr;
 }
-
+char Piece::getSym()
+{
+	return this->sym;
+}
 
