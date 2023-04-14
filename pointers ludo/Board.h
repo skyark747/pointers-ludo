@@ -14,7 +14,7 @@ public:
 	bool ValidBox(int i, int j);
 	bool HollowBox(int i, int j);
 	void updateBoard(int sri, int sci, int dri, int dci);
-	void DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr, Piece* Ps);
+	void DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps);
 	Piece* getpiece(int r,int c);
 };
 

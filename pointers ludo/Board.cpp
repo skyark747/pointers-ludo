@@ -186,23 +186,25 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
                     }
                 }
             }
-            else if (ri == R / 2 && ci == C / 2 && Ps!=nullptr)
+            else if (ri == R / 2 && ci == C / 2)
             {
-                   if (Ps->getColor() == RED)
-                        SetClr(4);
+                gotoRowCol(ri + Sc, Dc + ci);
+                if (Ps == nullptr || Ps->getSym()=='*')
+                    cout << char(-37);
+                else
+                {
+                    if (Ps->getColor() == RED)
+                        SetClr(14);
                     else if (Ps->getColor() == GREEN)
                         SetClr(14);
                     else if (Ps->getColor() == YELLOW)
                         SetClr(14);
                     else if (Ps->getColor() == BLUE)
-                        SetClr(14);  
-                   gotoRowCol(ri + Sc, Dc + ci);
+                        SetClr(14);
+                  
                     Ps->draw();
-                    
                     SetClr(clr);
-                gotoRowCol(ri + Sc, Dc + ci);
-                if (Ps->getSym() == '*')
-                    cout << char(-37);
+                }
             }
             else
             {
@@ -222,9 +224,9 @@ void Board::updateBoard(int sri, int sci, int dri, int dci)
 void Board::PrintBoard()
 {
     int clr = 8, Clr = 7, CLR = 15;
-    for (int ri = 0; ri < 15; ri++)
+    for (int ri = 0; ri < dim; ri++)
     {
-        for (int ci = 0; ci < 15; ci++)
+        for (int ci = 0; ci < dim; ci++)
         {
             if (!HollowBox(ri, ci))
             {
@@ -232,7 +234,7 @@ void Board::PrintBoard()
                 {
 
                     SetClr(4);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 4,this->getpiece(ri,ci));
                 }
                 else if ((ci > 7 && ci <= 14) && ri <= 5)
                 {
@@ -244,7 +246,7 @@ void Board::PrintBoard()
                 {
 
                     SetClr(6);
-                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 6,this->getpiece(ri,ci));
+                    DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 6, this->getpiece(ri, ci));
                 }
                 else if ((ci > 7 && ci <= 14) && ri > 5)
                 {
