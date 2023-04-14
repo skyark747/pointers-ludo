@@ -16,8 +16,8 @@ Ludo::Ludo()
 	this->dc = 0;
 	this->P[0] = new Player(RED, "Ahmed");
 	this->P[1] = new Player(GREEN, "Mahnoor");
-	this->P[2] = new Player(YELLOW, "Ifra");
-	this->P[3] = new Player(BLUE, "Soban");
+	this->P[2] = new Player(BLUE, "Soban");
+	this->P[3] = new Player(YELLOW, "Ifra");
 	this->B = new Board(15);
 	this->T = RED;
 }
