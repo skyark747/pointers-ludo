@@ -7,6 +7,8 @@ Player::Player(Color C,string n)
 {
 	this->Clr = C;
 	this->name = n;
+	this->size = 0;
+	this->Num = nullptr;
 }
 string Player::getname()
 {

@@ -2,6 +2,7 @@
 #include "Board.h"
 #include "Utility.h"
 #include "Dice.h"
+#include "Player.h"
 #include <conio.h>
 #include <iostream>
 using namespace std;
@@ -21,12 +22,18 @@ void Ludo::Play()
 	{
 		_getch();
 		Dice D;
-		D.rolldice();
+		for (int i = 0; i < 3; i++)
+		{
+			D.rolldice(P->Num, P->size);
+		}
 		gotoRowCol(0, (15 * 6) + 2);
-		cout << D.getdicevalue();
+		for (int i = 0; i < 3; i++)
+		{
+			cout << P->Num[i] << " ";
+		}
 		Board B{};
 		B.PrintBoard();
-		D.PrintDice(3/*D.getdicevalue()*/);
+		D.PrintDice(P->Num, P->size);
 		int r, c;
 		/*getRowColbyLeftClick(r, c);
 		std::cout << r << " " << c;*/

@@ -9,6 +9,8 @@ private:
 	Color Clr;
 	string name;
 public:
+	int* Num;
+	int size;
 	Player(Color clr, string _n);
 	string getname();
 	Color getclr();

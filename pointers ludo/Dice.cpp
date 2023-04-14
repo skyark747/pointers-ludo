@@ -9,12 +9,13 @@ Dice::Dice()
 {
 	this->dicevalue = 0;
 }
-void Dice::rolldice()
+void Dice::rolldice(int*& Num, int& size)
 {
     int N;
     N = rand() % 6;
     N = N + 1;
-	dicevalue = N;
+    InsertAtEnd(Num, size, N);
+    dicevalue = N;
 }
 int Dice::getdicevalue()
 {
@@ -23,9 +24,9 @@ int Dice::getdicevalue()
 
 void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
 {
-    for (int ri = 1; ri < R - 1 ; ri++)
+    for (int ri = 0; ri < R; ri++)
     {
-        for (int ci = 1; ci < C - 1; ci++)
+        for (int ci = 0; ci < C; ci++)
         {
             if (n == 1)
             {
@@ -59,7 +60,7 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
             }
             else if (n == 3)
             {
-                if (ri == ci && (ci==1 || ci == 2 || ci == 4))
+                if (ri == ci && (ci==1 || ci == 3 || ci == 5))
                 {
                     SetClr(4);
                     gotoRowCol(ri + Sc, Dc + ci);
@@ -148,9 +149,11 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
 }
 
 
-void Dice::PrintDice(int n)
+void Dice::PrintDice(int* Num, int size)
 {
     SetClr(15);
-    gotoRowCol((15 / 2) * 6, (15 / 2) * 6);
-    DrawBox((15 / 2) * 6, (15 / 2) * 6, 6, 6, n, 15);
+    for (int i = 0; i < size; i++)
+    {
+        DrawBox(1 * 6, (15 * 6) + 2, 7, 7, Num[i], 15);
+    }
 }

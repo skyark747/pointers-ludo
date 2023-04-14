@@ -4,6 +4,18 @@
 using namespace std;
 
 
+void InsertAtEnd(int*& Num, int& size, int T)
+{
+    int* HA = new int[size + 1];
+    for (int i = 0; i < size; i++)
+    {
+        HA[i] = Num[i];
+    }
+    HA[size] = T;
+    delete[]Num;
+    size++;
+    Num = HA;
+}
 void getRowColbyLeftClick(int& rpos, int& cpos)
 {
     HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
