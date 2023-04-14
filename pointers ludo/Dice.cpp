@@ -14,14 +14,13 @@ void Dice::rolldice(int*& Num, int& size)
     int N;
     N = rand() % 6;
     N = N + 1;
-    InsertAtEnd(Num, size, N);
+    //InsertAtEnd(Num, size, N);
     dicevalue = N;
 }
 int Dice::getdicevalue()
 {
 	return this->dicevalue;
 }
-
 void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
 {
     for (int ri = 0; ri < R; ri++)
@@ -147,7 +146,6 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
         }
     }
 }
-
 
 void Dice::PrintDice(int* Num, int size)
 {
