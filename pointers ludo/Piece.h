@@ -21,6 +21,6 @@ public:
 	char getSym();
 	bool isValidmove(int i, int j, int n);
 	virtual void draw() = 0;
-	void Move(int i, int j, int n);
+	void Move(int& i, int& j, int n);
 };
 

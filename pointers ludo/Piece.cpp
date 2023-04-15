@@ -40,24 +40,80 @@ bool Piece::isValidmove(int i, int j, int n)
 	}
 	return true;
 }
-void Piece::Move(int i, int j, int n)
+void Piece::Move(int& i, int& j, int n)
 {
 	for (int ri = 0; ri < n; ri++)
 	{
-		if (dir == UP)
+		switch (dir)
 		{
-			if (i - 1 == -1 || i - 1== 5)
+		case UP:
+			if (i - 1 == -1 || i - 1 == 5)
+			{
 				dir = RIGHT;
-		}
-		else if (dir == DOWN)
-		{
-			if (i + 1 == 15)
+				break;
+			}
+			else if (i - 1 == 6)
+			{
 				dir = LEFT;
-		}
-		else if (dir == LEFT)
-		{
-			if (j - 1 == -1)
+				i++;
+				break;
+			}
+			break;
+		case DOWN:
+			if (i + 1 == 15 || i + 1 == 9)
+			{
+				dir = LEFT;
+				break;
+			}
+			else if (i + 1 == 6)
+			{
+				dir = RIGHT;
+				i++;
+				break;
+			}
+			break;
+		case LEFT:
+			if (j - 1 == -1 || j - 1 == 5)
+			{
 				dir = UP;
+				break;
+			}
+			else if (j - 1 == 8)
+			{
+				dir = DOWN;
+				j--;
+				break;
+			}
+			break;
+		case RIGHT:
+			if (j + 1 == 15 || j + 1 == 9)
+			{
+				dir = DOWN;
+				break;
+			}
+			else if (j + 1 == 7)
+			{
+				dir = UP;
+				j++;
+				break;
+			}
+			break;
+		}
+
+		switch (dir)
+		{
+		case UP:
+			i--;
+			break;
+		case DOWN:
+			i++;
+			break;
+		case LEFT:
+			j--;
+			break;
+		case RIGHT:
+			j++;
+			break;
 		}
 	}
 }
