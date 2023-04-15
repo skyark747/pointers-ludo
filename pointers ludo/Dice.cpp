@@ -14,7 +14,7 @@ void Dice::rolldice(int*& Num, int& size)
     int N;
     N = rand() % 6;
     N = N + 1;
-    //InsertAtEnd(Num, size, N);
+    InsertAtEnd(Num, size, N);
     dicevalue = N;
 }
 int Dice::getdicevalue()

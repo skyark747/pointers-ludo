@@ -40,11 +40,6 @@ void Ludo::dice(Player* Ps)
 		{
 			D.rolldice(Ps->Num, Ps->size);
 		}
-		gotoRowCol(0, (15 * 6) + 2);
-		for (int i = 0; i < 3; i++)
-		{
-			cout << Ps->Num[i] << " ";
-		}
 		D.PrintDice(Ps->Num, Ps->size);
 	}
 }
