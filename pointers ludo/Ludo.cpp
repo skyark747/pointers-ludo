@@ -90,7 +90,6 @@ bool Ludo::isvaliddc(int dri, int dci, int D, Player* Ps)
 }
 void Ludo::Play()
 {
-	_getch();
 	B->PrintBoard();
 	while (true)
 	{

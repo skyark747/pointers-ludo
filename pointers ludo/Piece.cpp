@@ -40,3 +40,24 @@ bool Piece::isValidmove(int i, int j, int n)
 	}
 	return true;
 }
+void Piece::Move(int i, int j, int n)
+{
+	for (int ri = 0; ri < n; ri++)
+	{
+		if (dir == UP)
+		{
+			if (i - 1 == -1 || i - 1== 5)
+				dir = RIGHT;
+		}
+		else if (dir == DOWN)
+		{
+			if (i + 1 == 15)
+				dir = LEFT;
+		}
+		else if (dir == LEFT)
+		{
+			if (j - 1 == -1)
+				dir = UP;
+		}
+	}
+}
