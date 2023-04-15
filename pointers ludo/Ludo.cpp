@@ -9,12 +9,13 @@
 #include <iostream>
 using namespace std;
 
-Ludo::Ludo()
+Ludo::Ludo(int c)
 {
 	this->sr = 0;
 	this->sc = 0;
 	this->dr = 0;
 	this->dc = 0;
+	this->k = c;
 	*this->P = new Player(k);
 	if (this->P[0]->size == 2)
 	{

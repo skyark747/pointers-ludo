@@ -11,7 +11,7 @@ class Ludo
 	Board* B;
 	int T;
 public:
-	Ludo();
+	Ludo(int c);
 	int turnchange();
 	void turnmsg(Player* Ps);
 	void dice(Player*Ps);

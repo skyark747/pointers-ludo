@@ -241,6 +241,40 @@ void Board::updateBoard(int sri, int sci, int dri, int dci)
     this->P[dri][dci] = this->P[sri][sci];
     this->P[sri][sci] = nullptr;
 }
+void Board::drawpiece(int Sc, int Dc, int R, int C, int i, int j, int clr, Piece* Ps)
+{
+    for (int ri = 0; ri < R; ri++)
+    {
+        for (int ci = 0; ci < C; ci++)
+        {
+            if (ri == R / 2 && ci == C / 2 && Ps != nullptr)
+            {
+                if (ri == R / 2 && ci == C / 2 && Ps->getSym() == 'R')
+                {
+                    hollowbox(4, 4, Sc + ri - 2, Dc + ci - 2, -37, 15);
+                    box(2, 2, Sc+ri-1, Dc+ci-1, -37, 4);
+                }
+                if (ri == R / 2 && ci == C / 2 && Ps->getSym() == 'G')
+                {
+                    hollowbox(4, 4, Sc + ri - 2, Dc + ci - 2, -37, 15);
+                    box(2, 2, Sc+ri-1, Dc+ci-1, -37, 10);
+                }
+                if (ri == R / 2 && ci == C / 2 && Ps->getSym() == 'B')
+                {
+                    hollowbox(4, 4, Sc + ri - 2, Dc + ci - 2, -37, 15);
+                    box(2, 2, Sc+ri-1, Dc+ci-1, -37, 9);
+                }
+                if (ri == R / 2 && ci == C / 2 && Ps->getSym() == 'Y')
+                {
+ 
+                    hollowbox(4, 4, Sc + ri - 2, Dc + ci - 2, -37, 15);
+                    box(2, 2, Sc+ri-1, Dc+ci-1, -37, 6);
+                }
+            }
+        }
+    }
+    SetClr(10);
+}
 void Board::PrintBoard()
 {
     int clr = 8, Clr = 7, CLR = 15;
@@ -255,39 +289,46 @@ void Board::PrintBoard()
 
                     SetClr(4);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 4,this->getpiece(ri,ci));
+                    drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 else if ((ci > 7 && ci <= 14) && ri <= 5)
                 {
 
                     SetClr(2);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 2, this->getpiece(ri, ci));
+                    drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 else if ((ri > 7 && ri <= 14) && ci <= 5)
                 {
 
                     SetClr(6);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 6, this->getpiece(ri, ci));
+                    drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 else if ((ci > 7 && ci <= 14) && ri > 5)
                 {
                     SetClr(1);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 1, this->getpiece(ri, ci));
+                    drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 else
                 {
                     SetClr(12);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 12, this->getpiece(ri, ci));
+                    drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 if (ri > 5 && ri < 7 || ci>5 && ci < 9)
                 {
                     SetClr(13);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 13, this->getpiece(ri, ci));
+                    drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
             }
             else
             {
                 SetClr(0);
                 DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 0, this->getpiece(ri, ci));
+                drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
             }
         }
     }
