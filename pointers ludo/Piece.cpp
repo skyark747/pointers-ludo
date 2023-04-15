@@ -26,13 +26,13 @@ bool Piece::isValidmove(int i, int j, int n)
 	{
 		return false;
 	}
-	if (this->dir == LEFT && i == 7 && j - n > 7)
-	{
-		return false;
-	}
-	if (this->dir == DOWN && i == 1 && j + n > 7)
-	{
-		return false;
-	}
+	//if (this->dir == LEFT && i == 7 && j - n > 7)
+	//{
+	//	return false;
+	//}
+	//if (this->dir == DOWN && i == 1 && j + n > 7)
+	//{
+	//	return false;
+	//}
 	return true;
 }
