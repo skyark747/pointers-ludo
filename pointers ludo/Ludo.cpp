@@ -28,7 +28,7 @@ int Ludo::turnchange()
 }
 void Ludo::turnmsg(Player* Ps)
 {
-	gotoRowCol(91,0);
+	gotoRowCol(0,91);
 	cout << Ps->getname() << "'s" << " turn\n";
 }
 void Ludo::dice(Player* Ps)

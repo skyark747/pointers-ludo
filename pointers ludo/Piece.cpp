@@ -1,5 +1,6 @@
 #include "Piece.h"
 #include "Board.h"
+#include "Utility.h"
 #include <iostream>
 using namespace std;
 
@@ -19,4 +20,15 @@ char Piece::getSym()
 {
 	return this->sym;
 }
-
+bool Piece::isValidmove(int i, int j, int n)
+{
+	if (this->dir == RIGHT  && i == 7 && j + n > 7)
+	{
+		return false;
+	}
+	if (this->dir == LEFT && i == 7 && j - n > 7)
+	{
+		return false;
+	}
+	return true;
+}
