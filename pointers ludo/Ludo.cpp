@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Piece.h"
 #include <conio.h>
+#include "Dice.h"
 #include <iostream>
 using namespace std;
 
@@ -14,16 +15,31 @@ Ludo::Ludo()
 	this->sc = 0;
 	this->dr = 0;
 	this->dc = 0;
-	this->P[0] = new Player(RED, "Ahmed");
-	this->P[1] = new Player(GREEN, "Mahnoor");
-	this->P[2] = new Player(BLUE, "Soban");
-	this->P[3] = new Player(YELLOW, "Ifra");
+	*this->P = new Player(k);
+	if (this->P[0]->size == 2)
+	{
+		this->P[0] = new Player(RED, "Ahmed");
+		this->P[1] = new Player(GREEN, "Mahnoor");
+	}
+	else if (this->P[0]->size == 3)
+	{
+		this->P[0] = new Player(RED, "Ahmed");
+		this->P[1] = new Player(GREEN, "Mahnoor");
+		this->P[2] = new Player(BLUE, "Soban");
+	}
+	else if (this->P[0]->size == 4)
+	{
+		this->P[0] = new Player(RED, "Ahmed");
+		this->P[1] = new Player(GREEN, "Mahnoor");
+		this->P[2] = new Player(BLUE, "Soban");
+		this->P[3] = new Player(YELLOW, "Ifra");
+	}
 	this->B = new Board(15);
 	this->T = RED;
 }
 int Ludo::turnchange()
 {
-	this->T = (T + 1) % 4;
+	this->T = (T + 1) % this->k;
 	return this->T;
 }
 void Ludo::turnmsg(Player* Ps)
@@ -33,12 +49,12 @@ void Ludo::turnmsg(Player* Ps)
 }
 void Ludo::dice(Player* Ps)
 {
-	Dice D{}; int r,c;
 	srand(time(0));
+	Dice D{}; int r, c;
 	D.PrintDice(1);
 	getRowColbyLeftClick(r, c);
-	cout <<"    " << r << " " << c;
-	if (r == (13 * 6) && c == (15 * 6) + 2) {
+	if (D.isdiceclicked(r, c))
+	{
 		D.rolldice();
 		for (int i = 0; i < 6; i++)
 		{
@@ -96,7 +112,7 @@ void Ludo::Play()
 	B->PrintBoard();
 	while (true)
 	{
-		this->turnmsg(P[T]);
+		this->turnmsg(P[T]); 
 		dice(P[T]);
 		do
 		{

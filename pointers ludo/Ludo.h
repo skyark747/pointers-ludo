@@ -3,10 +3,10 @@
 class Board;
 class Player;
 class Dice;
-
 class Ludo
 {
 	int sr, sc, dr, dc;
+	int k;
 	Player* P[4];
 	Board* B;
 	int T;
@@ -19,7 +19,6 @@ public:
 	void mousemovedc();
 	bool isvalidsc(int sri,int sci,int D,Player*Ps);
 	bool isvaliddc(int dri, int dci, int D, Player* Ps);
-	void move(int r, int c);
 	void Play();
 	~Ludo();
 };

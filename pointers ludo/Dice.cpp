@@ -131,16 +131,13 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
 void Dice::PrintDice(int n)
 {
     SetClr(15);
-    DrawBox(13 * 6, (15 * 6) + 2, 7, 7, n, 15);
+    DrawBox(14 * 6, (15 * 6) + 2, 7, 7, n, 15);
 }
 bool Dice::isdiceclicked(int r,int c)
 {
-    for (int i = 0; i < 6; i++)
+    if (r >= 14 * 6 && r <= (14 * 6)+7 && c >= (15 * 6) + 2&& c <= (15 * 6) + 2+7)
     {
-        if (r == 13 * 6 && c == (15 * 6) + 2)
-        {
-            r + i; c + i;
-        }
+        return true;
     }
     return false;
 }

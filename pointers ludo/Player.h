@@ -12,6 +12,7 @@ public:
 	int* Num;
 	int size;
 	Player(Color clr, string _n);
+	Player(int s);
 	string getname();
 	Color getclr();
 };

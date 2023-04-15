@@ -5,6 +5,7 @@
 #include "Board.h"
 #include "Ludo.h"
 #include "Utility.h"
+#include "SFML/Graphics.hpp"
 using namespace std;
 
 int main()
