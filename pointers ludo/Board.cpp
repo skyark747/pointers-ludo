@@ -178,6 +178,26 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
                     cout << char(-37);
                     SetClr(0);
                 }
+                else if (ri == R / 2 && ci == C / 2)
+                {
+                    gotoRowCol(ri + Sc, Dc + ci);
+                    if (Ps == nullptr || Ps->getSym() == '*')
+                        cout << char(-37);
+                    else
+                    {
+                        if (Ps->getColor() == RED)
+                            SetClr(4);
+                        else if (Ps->getColor() == GREEN)
+                            SetClr(2);
+                        else if (Ps->getColor() == YELLOW)
+                            SetClr(6);
+                        else if (Ps->getColor() == BLUE)
+                            SetClr(1);
+
+                        Ps->draw();
+                        SetClr(clr);
+                    }
+                }
                 else
                 {
                     if (ValidBox(i, j))
@@ -194,13 +214,13 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
                 else
                 {
                     if (Ps->getColor() == RED)
-                        SetClr(14);
+                        SetClr(4);
                     else if (Ps->getColor() == GREEN)
-                        SetClr(14);
+                        SetClr(2);
                     else if (Ps->getColor() == YELLOW)
-                        SetClr(14);
+                        SetClr(6);
                     else if (Ps->getColor() == BLUE)
-                        SetClr(14);
+                        SetClr(1);
                   
                     Ps->draw();
                     SetClr(clr);
