@@ -9,7 +9,7 @@ Dice::Dice()
 {
 	this->dicevalue = 0;
 }
-void Dice::rolldice(int*& Num, int& size)
+void Dice::rolldice()
 {
     int N;
     N = rand() % 6;
@@ -146,11 +146,8 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
     }
 }
 
-void Dice::PrintDice(int* Num, int size)
+void Dice::PrintDice(int n)
 {
     SetClr(15);
-    for (int i = 0; i < size; i++)
-    {
-        DrawBox(1 * 6, (15 * 6) + 2, 7, 7, Num[i], 15);
-    }
+    DrawBox(2 * 6, (15 * 6) + 2, 7, 7, n, 15);
 }

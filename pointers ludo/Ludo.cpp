@@ -35,12 +35,15 @@ void Ludo::dice(Player* Ps)
 {
 	Dice D{};
 	srand(time(0));
+	D.rolldice();
 	if (_kbhit) {
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 6; i++)
 		{
-			D.rolldice(Ps->Num, Ps->size);
+			Sleep(200);
+			D.PrintDice(i);
 		}
-		D.PrintDice(Ps->Num, Ps->size);
+		Sleep(300);
+		D.PrintDice(D.getdicevalue());
 	}
 }
 void Ludo::mousemovesc()
@@ -87,11 +90,11 @@ bool Ludo::isvaliddc(int dri, int dci, int D, Player* Ps)
 }
 void Ludo::Play()
 {
-	_getch();
 	B->PrintBoard();
 	while (true)
 	{
 		this->turnmsg(P[T]);
+		dice(P[T]);
 		do
 		{
 			do
