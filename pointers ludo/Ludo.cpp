@@ -106,7 +106,6 @@ void Ludo::Play()
 		} while (!isvaliddc(this->dr, this->dc, 15, P[T]));
 		B->updateBoard(sr, sc, dr, dc);
 		B->PrintBoard();
-		//dice(this->P[T]);
 		this->turnchange();
 	}
 }
