@@ -243,6 +243,7 @@ void Board::updateBoard(int sri, int sci, int dri, int dci)
 }
 void Board::PrintBoard()
 {
+    
     int clr = 8, Clr = 7, CLR = 15;
     for (int ri = 0; ri < dim; ri++)
     {

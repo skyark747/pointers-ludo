@@ -7,3 +7,5 @@ using namespace std;
 void getRowColbyLeftClick(int& rpos, int& cpos);
 void gotoRowCol(int rpos, int cpos);
 void SetClr(int clr);
+void hollowbox(int R, int C, int sr, int sc, char sym,int clr);
+void box(int R, int C, int sr, int sc, char sym,int clr);

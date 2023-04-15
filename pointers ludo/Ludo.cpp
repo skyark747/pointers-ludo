@@ -33,10 +33,13 @@ void Ludo::turnmsg(Player* Ps)
 }
 void Ludo::dice(Player* Ps)
 {
-	Dice D{};
+	Dice D{}; int r,c;
 	srand(time(0));
-	D.rolldice();
-	if (_kbhit) {
+	D.PrintDice(1);
+	getRowColbyLeftClick(r, c);
+	cout <<"    " << r << " " << c;
+	if (r == (13 * 6) && c == (15 * 6) + 2) {
+		D.rolldice();
 		for (int i = 0; i < 6; i++)
 		{
 			Sleep(200);

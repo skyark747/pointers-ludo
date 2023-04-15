@@ -123,25 +123,7 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
                     cout << char(-37);
                 }
             }
-            //if (s == ' ' && (ri == 0 || ci == 0 || ri == R - 1 || ci == C - 1))
-            //{
-            //    SetClr(2);
-            //    gotoRowCol(ri + Sc, Dc + ci);
-            //    cout << char(-37);
-            //    SetClr(n);
-            //}
-            //else if (ri == R / 2 && ci == C / 2)
-            //{
-            //    //SetClr(CLR);
-            //    gotoRowCol(ri + Sc, Dc + ci);
-            //    cout << char(-37);
-            //    //SetClr(n);
-            //}
-            //else
-            //{
-            //    gotoRowCol(ri + Sc, Dc + ci);
-            //    cout << char(-37);
-            //}
+           
         }
     }
 }
@@ -149,5 +131,16 @@ void Dice::DrawBox(int Sc, int Dc, int R, int C, int n, int clr)
 void Dice::PrintDice(int n)
 {
     SetClr(15);
-    DrawBox(2 * 6, (15 * 6) + 2, 7, 7, n, 15);
+    DrawBox(13 * 6, (15 * 6) + 2, 7, 7, n, 15);
+}
+bool Dice::isdiceclicked(int r,int c)
+{
+    for (int i = 0; i < 6; i++)
+    {
+        if (r == 13 * 6 && c == (15 * 6) + 2)
+        {
+            r + i; c + i;
+        }
+    }
+    return false;
 }

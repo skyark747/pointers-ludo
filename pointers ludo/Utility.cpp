@@ -1,6 +1,7 @@
 #include "Utility.h"
 #include <conio.h>
 #include <Windows.h>
+#include <iostream>
 using namespace std;
 
 
@@ -44,4 +45,31 @@ void gotoRowCol(int rpos, int cpos)
 void SetClr(int clr)
 {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), clr);
+}
+void hollowbox(int R, int C, int sr, int sc, char sym, int clr)
+{
+    for (int i = 0; i < R; i++)
+    {
+        for (int j = 0; j < C; j++)
+        {
+            if (i == 0 || i == R - 1 || j == 0 || j == C - 1)
+            {
+                SetClr(clr);
+                gotoRowCol(sr + i, sc + j);
+                cout << sym;
+            }
+        }
+    }
+}
+void box(int R, int C, int sr, int sc, char sym,int clr)
+{
+    for (int i = 0; i < R; i++)
+    {
+        for (int j = 0; j < C; j++)
+        {
+            SetClr(clr);
+            gotoRowCol(sr + i, sc + j);
+            cout << sym;
+        }
+    }
 }
