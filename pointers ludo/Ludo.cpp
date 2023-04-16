@@ -112,7 +112,6 @@ bool Ludo::isvaliddc(int dri, int dci, int D, Player* Ps)
 }
 void Ludo::Play()
 {
-	_getch();
 	Dice D{};
 	B->PrintBoard();
 	while (true)
