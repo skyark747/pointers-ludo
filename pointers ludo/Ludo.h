@@ -14,7 +14,7 @@ public:
 	Ludo(int c);
 	int turnchange();
 	void turnmsg(Player* Ps);
-	void dice(Player*Ps);
+	void dice(Player*Ps, Dice D);
 	void mousemovesc();
 	void mousemovedc();
 	bool isvalidsc(int sri,int sci,int D,Player*Ps);

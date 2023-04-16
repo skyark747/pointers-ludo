@@ -48,10 +48,10 @@ void Ludo::turnmsg(Player* Ps)
 	gotoRowCol(0,91);
 	cout << Ps->getname() << "'s" << " turn\n";
 }
-void Ludo::dice(Player* Ps)
+void Ludo::dice(Player* Ps, Dice D)
 {
 	srand(time(0));
-	Dice D{}; int r, c;
+	int r, c;
 	D.PrintDice(1);
 	getRowColbyLeftClick(r, c);
 	if (D.isdiceclicked(r, c))
@@ -110,11 +110,12 @@ bool Ludo::isvaliddc(int dri, int dci, int D, Player* Ps)
 }
 void Ludo::Play()
 {
+	Dice D{};
 	B->PrintBoard();
 	while (true)
 	{
 		this->turnmsg(P[T]); 
-		dice(P[T]);
+		dice(P[T], D);
 		do
 		{
 			do
@@ -123,7 +124,7 @@ void Ludo::Play()
 			} while (!isvalidsc(this->sr, this->sc, 15, P[T]));
 			mousemovedc();
 		} while (!isvaliddc(this->dr, this->dc, 15, P[T]));
-		B->updateBoard(sr, sc, dr, dc);
+		B->updateBoard(sr, sc, D.getdicevalue());
 		B->PrintBoard();
 		this->turnchange();
 	}

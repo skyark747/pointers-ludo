@@ -236,9 +236,12 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
     }
     SetClr(10);
 }
-void Board::updateBoard(int sri, int sci, int dri, int dci)
+void Board::updateBoard(int sri, int sci, int n)
 {
-    this->P[dri][dci] = this->P[sri][sci];
+    int i = sri;
+    int j = sci;
+    this->P[sri][sci]->Move(i, j, n);
+    this->P[i][j] = this->P[sri][sci];
     this->P[sri][sci] = nullptr;
 }
 void Board::drawpiece(int Sc, int Dc, int R, int C, int i, int j, int clr, Piece* Ps)
