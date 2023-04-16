@@ -114,7 +114,6 @@ void Ludo::Play()
 {
 	_getch();
 	Dice D{};
-	int Num;
 	B->PrintBoard();
 	while (true)
 	{
