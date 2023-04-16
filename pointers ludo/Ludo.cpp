@@ -112,13 +112,14 @@ bool Ludo::isvaliddc(int dri, int dci, int D, Player* Ps)
 }
 void Ludo::Play()
 {
+	_getch();
 	Dice D{};
+	int Num;
 	B->PrintBoard();
 	while (true)
 	{
 		this->turnmsg(P[T]);
 		//dice(P[T], D);
-		_getch();
 		do
 		{
 			mousemovesc();
