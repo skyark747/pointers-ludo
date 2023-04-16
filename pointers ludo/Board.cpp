@@ -241,8 +241,11 @@ void Board::updateBoard(int sri, int sci, int n)
     int i = sri;
     int j = sci;
     this->P[sri][sci]->Move(i, j, n);
-    this->P[i][j] = this->P[sri][sci];
-    this->P[sri][sci] = nullptr;
+    if (i != sri || j != sci)
+    {
+        this->P[i][j] = this->P[sri][sci];
+        this->P[sri][sci] = nullptr;
+    }
 }
 void Board::drawpiece(int Sc, int Dc, int R, int C, int i, int j, int clr, Piece* Ps)
 {

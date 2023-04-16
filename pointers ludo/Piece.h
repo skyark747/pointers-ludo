@@ -14,6 +14,7 @@ protected:
 	Board* B;
 	char sym;
 	Direction dir;
+	bool isAlive;
 
 public:
 	Piece(Color c, int sr, int sc,Board*Brd,char s);
@@ -22,5 +23,6 @@ public:
 	bool isValidmove(int i, int j, int n);
 	virtual void draw() = 0;
 	void Move(int& i, int& j, int n);
+	void PlaceOnHome(int& i, int& j);
 };
 

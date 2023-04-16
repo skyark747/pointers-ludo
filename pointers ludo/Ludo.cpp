@@ -110,21 +110,18 @@ bool Ludo::isvaliddc(int dri, int dci, int D, Player* Ps)
 }
 void Ludo::Play()
 {
+	_getch();
 	Dice D{};
 	B->PrintBoard();
 	while (true)
 	{
-		this->turnmsg(P[T]); 
+		this->turnmsg(P[T]);
 		dice(P[T], D);
 		do
 		{
-			do
-			{
-				mousemovesc();
-			} while (!isvalidsc(this->sr, this->sc, 15, P[T]));
-			mousemovedc();
-		} while (!isvaliddc(this->dr, this->dc, 15, P[T]));
-		B->updateBoard(sr, sc, D.getdicevalue());
+			mousemovesc();
+		} while (!isvalidsc(this->sr, this->sc, 15, P[T]));
+		B->updateBoard(sr, sc, 6);
 		B->PrintBoard();
 		this->turnchange();
 	}

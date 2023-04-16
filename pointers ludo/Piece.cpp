@@ -11,6 +11,23 @@ Piece::Piece(Color c, int sr, int sc, Board* Brd,char s)
 	this->c = sc;
 	this->B = Brd;
 	this->sym = s;
+	this->isAlive = false;
+	if (c == RED)
+	{
+		this->dir = RIGHT;
+	}
+	if (c == GREEN)
+	{
+		this->dir = DOWN;
+	}
+	if (c == YELLOW)
+	{
+		this->dir = LEFT;
+	}
+	if (c == BLUE)
+	{
+		this->dir = UP;
+	}
 }
 Color Piece::getColor()
 {
@@ -40,80 +57,111 @@ bool Piece::isValidmove(int i, int j, int n)
 	}
 	return true;
 }
+void Piece::PlaceOnHome(int& i, int& j)
+{
+	if (this->clr == RED)
+	{
+		i = 6;
+		j = 1;
+	}
+	if (this->clr == GREEN)
+	{
+		i = 1;
+		j = 8;
+	}
+	if (this->clr == BLUE)
+	{
+		i = 8;
+		j = 13;
+	}
+	if (this->clr == YELLOW)
+	{
+		i = 13;
+		j = 6;
+	}
+}
 void Piece::Move(int& i, int& j, int n)
 {
-	for (int ri = 0; ri < n; ri++)
+	if (this->isAlive == false && n == 6)
 	{
-		switch (dir)
+		this->PlaceOnHome(i, j);
+		this->isAlive = true;
+	}
+	else if (this->isAlive == true)
+	{
+		for (int ri = 0; ri < n; ri++)
 		{
-		case UP:
-			if (i - 1 == -1 || i - 1 == 5)
+			switch (dir)
 			{
-				dir = RIGHT;
+			case UP:
+				if (i - 1 == -1 || i - 1 == 5)
+				{
+					dir = RIGHT;
+					break;
+				}
+				else if (i - 1 == 6)
+				{
+					dir = LEFT;
+					i++;
+					break;
+				}
+				break;
+			case DOWN:
+				if (i + 1 == 15 || i + 1 == 9)
+				{
+					dir = LEFT;
+					break;
+				}
+				else if (i + 1 == 6)
+				{
+					dir = RIGHT;
+					i++;
+					break;
+				}
+				break;
+			case LEFT:
+				if (j - 1 == -1 || j - 1 == 5)
+				{
+					dir = UP;
+					break;
+				}
+				else if (j - 1 == 8)
+				{
+					dir = DOWN;
+					j--;
+					break;
+				}
+				break;
+			case RIGHT:
+				if (j + 1 == 15 || j + 1 == 9)
+				{
+					dir = DOWN;
+					break;
+				}
+				else if (j + 1 == 7)
+				{
+					dir = UP;
+					j++;
+					break;
+				}
 				break;
 			}
-			else if (i - 1 == 6)
+
+			switch (dir)
 			{
-				dir = LEFT;
+			case UP:
+				i--;
+				break;
+			case DOWN:
 				i++;
 				break;
-			}
-			break;
-		case DOWN:
-			if (i + 1 == 15 || i + 1 == 9)
-			{
-				dir = LEFT;
-				break;
-			}
-			else if (i + 1 == 6)
-			{
-				dir = RIGHT;
-				i++;
-				break;
-			}
-			break;
-		case LEFT:
-			if (j - 1 == -1 || j - 1 == 5)
-			{
-				dir = UP;
-				break;
-			}
-			else if (j - 1 == 8)
-			{
-				dir = DOWN;
+			case LEFT:
 				j--;
 				break;
-			}
-			break;
-		case RIGHT:
-			if (j + 1 == 15 || j + 1 == 9)
-			{
-				dir = DOWN;
-				break;
-			}
-			else if (j + 1 == 7)
-			{
-				dir = UP;
+			case RIGHT:
 				j++;
 				break;
 			}
-			break;
-		}
-
-		switch (dir)
-		{
-		case UP:
-			i--;
-			break;
-		case DOWN:
-			i++;
-			break;
-		case LEFT:
-			j--;
-			break;
-		case RIGHT:
-			j++;
-			break;
 		}
 	}
 }
