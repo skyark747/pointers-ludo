@@ -67,7 +67,7 @@ int main()
 		menu.display();
 	}*/
 
- 	Ludo L(2);
+ 	Ludo L(4);
 	L.Play();
 	return 0;
 }
