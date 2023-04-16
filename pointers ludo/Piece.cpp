@@ -22,11 +22,11 @@ Piece::Piece(Color c, int sr, int sc, Board* Brd,char s)
 	}
 	if (c == YELLOW)
 	{
-		this->dir = LEFT;
+		this->dir = UP;
 	}
 	if (c == BLUE)
 	{
-		this->dir = UP;
+		this->dir = LEFT;
 	}
 }
 Color Piece::getColor()
@@ -99,10 +99,10 @@ void Piece::Move(int& i, int& j, int n)
 					dir = RIGHT;
 					break;
 				}
-				else if (i - 1 == 6)
+				else if (i - 1 == 8)
 				{
 					dir = LEFT;
-					i++;
+					i--;
 					break;
 				}
 				break;
@@ -138,7 +138,7 @@ void Piece::Move(int& i, int& j, int n)
 					dir = DOWN;
 					break;
 				}
-				else if (j + 1 == 7)
+				else if (j + 1 == 6)
 				{
 					dir = UP;
 					j++;

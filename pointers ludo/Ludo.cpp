@@ -87,7 +87,9 @@ bool Ludo::isvalidsc(int sri, int sci, int D, Player* Ps)
 	else
 	{
 		Piece* pc=B->getpiece(sri,sci);
-		if (pc!=nullptr && (Ps->getclr() == pc->getColor()))
+		if (pc == nullptr)
+			return false;
+		else if (pc!=nullptr && (Ps->getclr() == pc->getColor()))
 		{
 			return true;
 		}
@@ -116,7 +118,8 @@ void Ludo::Play()
 	while (true)
 	{
 		this->turnmsg(P[T]);
-		dice(P[T], D);
+		//dice(P[T], D);
+		_getch();
 		do
 		{
 			mousemovesc();
