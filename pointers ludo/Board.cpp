@@ -256,19 +256,79 @@ void Board::Dead(int i, int j)
 {
     if (this->P[i][j]->getColor() == RED)
     {
-        /*if(this->P)*/
+        if (this->P[1][1] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(1, 1);
+        }
+        else if (this->P[1][4] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(1, 4);
+        }
+        else if (this->P[4][1] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(4, 1);
+        }
+        else if (this->P[4][4] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(4, 4);
+        }
     }
     if (this->P[i][j]->getColor() == GREEN)
     {
-
+        if (this->P[1][10] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(1, 10);
+        }
+        else if (this->P[1][13] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(1, 13);
+        }
+        else if (this->P[4][10] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(4, 10);
+        }
+        else if (this->P[4][13] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(4, 13);
+        }
     }
     if (this->P[i][j]->getColor() == YELLOW)
     {
-
+        if (this->P[10][1] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(10, 1);
+        }
+        else if (this->P[13][1] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(13, 1);
+        }
+        else if (this->P[10][4] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(10, 4);
+        }
+        else if (this->P[13][4] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(13, 4);
+        }
     }
     if (this->P[i][j]->getColor() == BLUE)
     {
-
+        if (this->P[10][10] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(10, 10);
+        }
+        else if (this->P[10][13] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(10, 13);
+        }
+        else if (this->P[13][10] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(13, 10);
+        }
+        else if (this->P[13][13] == nullptr || this->P[i][j]->getSym() == '*')
+        {
+            this->P[i][j]->Die(13, 13);
+        }
     }
 
 }
@@ -279,12 +339,17 @@ void Board::updateBoard(int sri, int sci, int n)
     this->P[sri][sci]->Move(i, j, n);
     if (i != sri || j != sci)
     {
-        if (this->P[i][j] != nullptr || this->P[i][j]->getSym() != '*')
+        if (this->P[i][j] == nullptr)
+        {
+            this->P[i][j] = this->P[sri][sci];
+            this->P[sri][sci] = nullptr;
+        }
+        else if (this->P[i][j]->getSym() != '*' && !this->P[i][j]->OnStop(i, j))
         {
             Dead(i, j);
+            this->P[i][j] = this->P[sri][sci];
+            this->P[sri][sci] = nullptr;
         }
-        this->P[i][j] = this->P[sri][sci];
-        this->P[sri][sci] = nullptr;
     }
 }
 void Board::drawpiece(int Sc, int Dc, int R, int C, int i, int j, int clr, Piece* Ps)

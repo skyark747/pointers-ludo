@@ -167,8 +167,45 @@ void Piece::Move(int& i, int& j, int n)
 	this->r = i;
 	this->c = j;
 }
+bool Piece::OnStop(int i, int j)
+{
+	if (i == 6 && j == 1)
+	{
+		return true;
+	}
+	else if (i == 6 && j == 12)
+	{
+		return true;
+	}
+	else if (i == 8 && j == 2)
+	{
+		return true;
+	}
+	else if (i == 8 && j == 13)
+	{
+		return true;
+	}
+	else if (i == 2 && j == 6)
+	{
+		return true;
+	}
+	else if (i == 1 && j == 8)
+	{
+		return true;
+	}
+	else if (i == 13 && j == 6)
+	{
+		return true;
+	}
+	else if (i == 12 && j == 8)
+	{
+		return true;
+	}
+	return false;
+}
 void Piece::Die(int i, int j)
 {
 	r = i;
 	c = j;
+	isAlive = false;
 }
