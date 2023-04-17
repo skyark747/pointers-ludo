@@ -5,7 +5,7 @@
 #include "Ludo.h"
 #include "Utility.h"
 #include "Menu.h"
-//#include <SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 using namespace std;
 //using namespace sf;
 
