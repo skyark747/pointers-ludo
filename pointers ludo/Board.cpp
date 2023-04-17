@@ -183,7 +183,7 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
                     gotoRowCol(ri + Sc, Dc + ci);
                     if (Ps == nullptr || Ps->getSym() == '*')
                         cout << char(-37);
-                    else
+                 /*   else
                     {
                         if (Ps->getColor() == RED)
                             SetClr(4);
@@ -196,7 +196,7 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
 
                         Ps->draw();
                         SetClr(clr);
-                    }
+                    }*/
                 }
                 else
                 {
@@ -214,7 +214,7 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
 
                 cout << char(-37);
             }
-            else if (Ps != nullptr && Ps->getSym() != '*')
+           /* else if (Ps != nullptr && Ps->getSym() != '*')
             {
                 if (Ps->getColor() == RED)
                     SetClr(4);
@@ -227,16 +227,50 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
 
                 Ps->draw();
                 SetClr(clr);
-            }
+            }*/
             else
             {
-                gotoRowCol(ri + Sc, Dc + ci);
-                cout << char(-37);
+                    gotoRowCol(ri + Sc, Dc + ci);
+                    cout << char(-37);
             }
 
         }
     }
+    if (Ps != nullptr && Ps->getSym() != '*')
+    {
+        if (Ps->getColor() == RED)
+            SetClr(4);
+        else if (Ps->getColor() == GREEN)
+            SetClr(2);
+        else if (Ps->getColor() == YELLOW)
+            SetClr(6);
+        else if (Ps->getColor() == BLUE)
+            SetClr(1);
+
+        Ps->draw();
+        SetClr(clr);
+    }
     SetClr(10);
+}
+void Board::Dead(int i, int j)
+{
+    if (this->P[i][j]->getColor() == RED)
+    {
+        /*if(this->P)*/
+    }
+    if (this->P[i][j]->getColor() == GREEN)
+    {
+
+    }
+    if (this->P[i][j]->getColor() == YELLOW)
+    {
+
+    }
+    if (this->P[i][j]->getColor() == BLUE)
+    {
+
+    }
+
 }
 void Board::updateBoard(int sri, int sci, int n)
 {
@@ -245,6 +279,10 @@ void Board::updateBoard(int sri, int sci, int n)
     this->P[sri][sci]->Move(i, j, n);
     if (i != sri || j != sci)
     {
+        if (this->P[i][j] != nullptr || this->P[i][j]->getSym() != '*')
+        {
+            Dead(i, j);
+        }
         this->P[i][j] = this->P[sri][sci];
         this->P[sri][sci] = nullptr;
     }

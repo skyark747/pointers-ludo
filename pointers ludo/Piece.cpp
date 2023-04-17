@@ -167,3 +167,8 @@ void Piece::Move(int& i, int& j, int n)
 	this->r = i;
 	this->c = j;
 }
+void Piece::Die(int i, int j)
+{
+	r = i;
+	c = j;
+}

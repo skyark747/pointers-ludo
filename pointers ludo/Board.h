@@ -17,5 +17,6 @@ public:
 	void DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps);
 	void drawpiece(int Sc, int Dc, int R, int C, int i, int j, int clr, Piece* Ps);
 	Piece* getpiece(int r,int c);
+	void Dead(int i, int j);
 };
 

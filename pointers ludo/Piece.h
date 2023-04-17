@@ -22,7 +22,7 @@ public:
 	char getSym();
 	bool isValidmove(int i, int j, int n);
 	virtual void draw() = 0;
+	void Die(int i, int j);
 	void Move(int& i, int& j, int n);
 	void PlaceOnHome(int& i, int& j);
 };
-

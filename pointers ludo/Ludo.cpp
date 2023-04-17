@@ -123,7 +123,7 @@ void Ludo::Play()
 		{
 			mousemovesc();
 		} while (!isvalidsc(this->sr, this->sc, 15, P[T]));
-		B->updateBoard(sr, sc, 6);
+		B->updateBoard(sr, sc, 6/*D.getdicevalue()*/);
 		B->PrintBoard();
 		this->turnchange();
 	}
