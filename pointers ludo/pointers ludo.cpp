@@ -33,59 +33,88 @@ int main()
 	B.loadFromFile("voice.WAV");
 	Sound s;
 	s.setBuffer(B);
-	s.play();
+	
 	while (menu.isOpen())
 	{
 		Event event;
-		while (menu.pollEvent(event))
+		if (menu.pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed) {
 				menu.close();
-					if (event.type == Event::KeyReleased)
+			}
+			if (event.type == Event::KeyReleased)
+			{
+				if (event.key.code == Keyboard::Enter)
+				{
+					RenderWindow start(VideoMode(1400, 800), "Pointers's Ludo");
+					s.play();
+					while (start.isOpen())
 					{
-						if (event.key.code == Keyboard::Left)
+						Event aevent;
+						while (start.pollEvent(aevent))
 						{
-							m.moveright(); break;
+							if (aevent.type == sf::Event::Closed) {
+								start.close();
+							}
+							if (aevent.type == Event::KeyReleased)
+							{
+								if (aevent.key.code == Keyboard::Right)
+								{
+									m.moveleft(); 
+									break;
+								}
+								else if (aevent.key.code == Keyboard::Left)
+								{
+									m.moveright();
+									break;
+								}
+								int x = m.mainmenupressed();
+								if (x == 0)
+								{
+									if (aevent.key.code == Keyboard::Enter) {
+										Ludo L(2);
+										L.Play();
+										break;
+									}
+								}
+								if (x == 1) {
+									if (aevent.key.code == Keyboard::Enter) {
+										Ludo L(3);
+										L.Play();
+										break;
+									}
+								}
+								if (x == 2) {
+									if (aevent.key.code == Keyboard::Enter) {
+										Ludo L(4);
+										L.Play();
+									}
+								}
+							}
 						}
-						else if (event.key.code == Keyboard::Right)
-						{
-							m.moveleft(); break;
-						}
+						menu.close();
+						start.clear();
+						start.draw(background);
+						m.draw(start);
+						start.display();
+						
 					}
-					int x = m.mainmenupressed();
-					if (x == 0)
-					{
-						if (event.key.code == Keyboard::Enter) {
-							Ludo L(2);
-							L.Play();
-							break;
-						}
-					}
-					if (x == 1)
-					{
-						if (event.key.code == Keyboard::Enter) {
-							Ludo L(3);
-							L.Play();
-							break;
-						}
-					}
-					if (x == 2)
-					{
-						if (event.key.code == Keyboard::Enter) {
-							Ludo L(4);
-							L.Play();
-						}
-					}
-			menu.clear();
-			menu.draw(background);
-			m.draw(menu);
-			menu.display();
+					start.clear();
+					start.draw(background);
+					m.draw(start);
+					start.display();
+					
+				}
+			}
+						
 		}
-		
+		menu.clear();
+		menu.draw(lg);
+		l.draw(menu);
+		menu.display();
 	}
 
  	/*Ludo L(4);
 	L.Play();*/
 	return 0;
 }
-

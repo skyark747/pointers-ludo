@@ -13,7 +13,7 @@ logo::logo(float x,float y)
 
 	T[1].setFont(f);
 	T[1].setFillColor(Color::White);
-	T[1].setString("press any key to continue");
+	T[1].setString("press Enter key to continue");
 	T[1].setCharacterSize(30);
 	T[1].setPosition(Vector2f(400, 700));
 
