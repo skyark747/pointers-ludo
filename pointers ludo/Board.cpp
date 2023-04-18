@@ -332,22 +332,41 @@ void Board::Dead(int i, int j)
     }
 
 }
-void Board::updateBoard(int sri, int sci, int n)
+void Board::updateBoard(int sri, int sci, int n, Piece*& Ps)
 {
     int i = sri;
     int j = sci;
     this->P[sri][sci]->Move(i, j, n);
+    if (this->P[i][j] != nullptr && (this->P[i][j]->getSym() == this->P[sri][sci]->getSym()))
+    {
+        Ps = this->P[i][j];
+    }
     if (i != sri || j != sci)
     {
         if (this->P[i][j] == nullptr)
         {
             this->P[i][j] = this->P[sri][sci];
-            this->P[sri][sci] = nullptr;
         }
         else if (this->P[i][j]->getSym() != '*' && this->P[sri][sci]->getSym() != this->P[i][j]->getSym() && !this->P[i][j]->OnStop(i, j))
         {
             Dead(i, j);
             this->P[i][j] = this->P[sri][sci];
+        }
+        else
+        {
+            this->P[i][j] = this->P[sri][sci];
+        }
+
+        if (Ps != nullptr && ((i != Ps->Row() || j != Ps->Col())) && Ps->getSym() == this->P[sri][sci]->getSym())
+        {
+            this->P[i][j] = this->P[sri][sci];
+            if (Ps == nullptr)
+                this->P[sri][sci] = nullptr;
+            else
+                this->P[sri][sci] = Ps;
+        }
+        else
+        {
             this->P[sri][sci] = nullptr;
         }
     }

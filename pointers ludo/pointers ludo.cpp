@@ -74,7 +74,6 @@ int main()
 									if (aevent.key.code == Keyboard::Enter) {
 										Ludo L(2);
 										L.Play();
-										start.close();
 										break;
 									}
 								}

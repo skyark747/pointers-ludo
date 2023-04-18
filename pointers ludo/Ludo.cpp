@@ -114,6 +114,7 @@ void Ludo::Play()
 {
 	_getch();
 	Dice D{};
+	Piece* Ps = nullptr;
 	B->PrintBoard();
 	while (true)
 	{
@@ -123,7 +124,7 @@ void Ludo::Play()
 		{
 			mousemovesc();
 		} while (!isvalidsc(this->sr, this->sc, 15, P[T]));
-		B->updateBoard(sr, sc, 6/*D.getdicevalue()*/);
+		B->updateBoard(sr, sc, 6/*D.getdicevalue()*/,Ps);
 		B->PrintBoard();
 		this->turnchange();
 	}
