@@ -72,6 +72,7 @@ int main()
 								if (x == 0)
 								{
 									if (aevent.key.code == Keyboard::Enter) {
+										start.close();
 										Ludo L(2);
 										L.Play();
 										break;
@@ -79,6 +80,7 @@ int main()
 								}
 								if (x == 1) {
 									if (aevent.key.code == Keyboard::Enter) {
+										start.close();
 										Ludo L(3);
 										L.Play();
 										start.close();
@@ -87,6 +89,7 @@ int main()
 								}
 								if (x == 2) {
 									if (aevent.key.code == Keyboard::Enter) {
+										start.close();
 										Ludo L(4);
 										L.Play();
 									}

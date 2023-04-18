@@ -114,17 +114,34 @@ void Ludo::Play()
 {
 	_getch();
 	Dice D{};
-	Piece* Ps = nullptr;
+	Piece* PsR = nullptr;
+	Piece* PsG = nullptr;
+	Piece* PsY = nullptr;
+	Piece* PsB = nullptr;
 	B->PrintBoard();
 	while (true)
 	{
 		this->turnmsg(P[T]);
-		//dice(P[T], D);
+		dice(P[T], D);
 		do
 		{
 			mousemovesc();
 		} while (!isvalidsc(this->sr, this->sc, 15, P[T]));
-		B->updateBoard(sr, sc, 6/*D.getdicevalue()*/,Ps);
+		switch(T)
+		{
+		case RED:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsR);
+			break;
+		case GREEN:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsG);
+			break;
+		case BLUE:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsB);
+			break;
+		case YELLOW:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsY);
+			break;
+		}
 		B->PrintBoard();
 		this->turnchange();
 	}
