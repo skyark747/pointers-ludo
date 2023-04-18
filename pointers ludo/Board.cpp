@@ -344,7 +344,7 @@ void Board::updateBoard(int sri, int sci, int n)
             this->P[i][j] = this->P[sri][sci];
             this->P[sri][sci] = nullptr;
         }
-        else if (this->P[i][j]->getSym() != '*' && !this->P[i][j]->OnStop(i, j))
+        else if (this->P[i][j]->getSym() != '*' && this->P[sri][sci]->getSym() != this->P[i][j]->getSym() && !this->P[i][j]->OnStop(i, j))
         {
             Dead(i, j);
             this->P[i][j] = this->P[sri][sci];
