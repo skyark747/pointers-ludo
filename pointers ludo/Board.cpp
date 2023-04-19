@@ -163,6 +163,23 @@ bool Board::HollowBox(int i, int j)
         return true;
     return false;
 }
+bool Board::isvalidsc(int sri, int sci, int D, Player* Ps)
+{
+    if (sri < 0 || sri>D || sci < 0 || sci>D)
+        return false;
+    else
+    {
+        if (this->P[sri][sci] == nullptr)
+            return false;
+        else if (this->P[sri][sci]->getSym() == '*')
+            return false;
+        else if (this->P[sri][sci]->getColor() == Ps->getclr())
+        {
+            return true;
+        }
+    }
+    return false;
+}
 void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps)
 {
     for (int ri = 0; ri < R; ri++)
@@ -464,3 +481,4 @@ void Board::PrintBoard()
     }
     SetClr(6);
 }
+
