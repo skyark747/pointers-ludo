@@ -37,6 +37,14 @@ char Piece::getSym()
 {
 	return this->sym;
 }
+int Piece::Row()
+{
+	return r;
+}
+int Piece::Col()
+{
+	return c;
+}
 bool Piece::isValidmove(int i, int j, int n)
 {
 	if (this->dir == RIGHT  && i == 7 && j + n > 7)

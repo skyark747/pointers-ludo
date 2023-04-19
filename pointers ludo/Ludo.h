@@ -17,7 +17,6 @@ public:
 	void dice(Player*Ps, Dice D);
 	void mousemovesc();
 	void mousemovedc();
-	bool isvalidsc(int sri,int sci,int D,Player*Ps);
 	bool isvaliddc(int dri, int dci, int D, Player* Ps);
 	void Play();
 	~Ludo();

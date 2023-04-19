@@ -80,22 +80,6 @@ void Ludo::mousemovedc()
 	this->dr = r / 6;
 	this->dc = c / 6;
 }
-bool Ludo::isvalidsc(int sri, int sci, int D, Player* Ps)
-{
-	if (sri < 0 || sri>D || sci < 0 || sci>D)
-		return false;
-	else
-	{
-		Piece* pc=B->getpiece(sri,sci);
-		if (pc == nullptr)
-			return false;
-		else if (pc!=nullptr && (Ps->getclr() == pc->getColor()))
-		{
-			return true;
-		}
-	}
-	return false;
-}
 bool Ludo::isvaliddc(int dri, int dci, int D, Player* Ps)
 {
 	if (dri < 0 || dri>D || dci < 0 || dci>D)
@@ -114,16 +98,34 @@ void Ludo::Play()
 {
 	_getch();
 	Dice D{};
+	Piece* PsR = nullptr;
+	Piece* PsG = nullptr;
+	Piece* PsY = nullptr;
+	Piece* PsB = nullptr;
 	B->PrintBoard();
 	while (true)
 	{
 		this->turnmsg(P[T]);
-		//dice(P[T], D);
+		dice(P[T], D);
 		do
 		{
 			mousemovesc();
-		} while (!isvalidsc(this->sr, this->sc, 15, P[T]));
-		B->updateBoard(sr, sc, 6/*D.getdicevalue()*/);
+		} while (!B->isvalidsc(this->sr, this->sc, 15, P[T]));
+		switch(T)
+		{
+		case RED:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsR);
+			break;
+		case GREEN:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsG);
+			break;
+		case BLUE:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsB);
+			break;
+		case YELLOW:
+			B->updateBoard(sr, sc, 6/*D.getdicevalue()*/, PsY);
+			break;
+		}
 		B->PrintBoard();
 		this->turnchange();
 	}

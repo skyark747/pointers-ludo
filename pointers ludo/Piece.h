@@ -24,6 +24,8 @@ public:
 	virtual void draw() = 0;
 	void Die(int i, int j);
 	bool OnStop(int i, int j);
+	int Row();
+	int Col();
 	void Move(int& i, int& j, int n);
 	void PlaceOnHome(int& i, int& j);
 };
