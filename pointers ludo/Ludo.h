@@ -1,5 +1,5 @@
 #pragma once
-
+#include <stack>
 class Board;
 class Player;
 class Dice;
@@ -9,6 +9,7 @@ class Ludo
 	int k;
 	Player* P[4];
 	Board* B;
+	std::stack<Board&> res;
 	int T;
 public:
 	Ludo(int c);
@@ -19,6 +20,7 @@ public:
 	void mousemovedc();
 	bool isvaliddc(int dri, int dci, int D, Player* Ps);
 	void Play();
+	void restart();
 	~Ludo();
 };
 

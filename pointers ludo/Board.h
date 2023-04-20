@@ -10,6 +10,7 @@ protected:
 	Piece*** P;
 public:
 	Board(int D);
+	Board(const Board& B);
 	void PrintBoard();
 	bool CentralBox(int i, int j);
 	bool ValidBox(int i, int j);

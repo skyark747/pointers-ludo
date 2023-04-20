@@ -6,6 +6,7 @@
 #include "Piece.h"
 #include <conio.h>
 #include "Dice.h"
+#include <stack>
 #include <iostream>
 using namespace std;
 
@@ -66,12 +67,30 @@ void Ludo::dice(Player* Ps, Dice D)
 		D.PrintDice(D.getdicevalue());
 	}
 }
+void Ludo::restart()
+{
+	if (res.empty())
+		return;
+	else
+	{
+		*B = res.top();
+		B->PrintBoard();
+		res.pop();
+	}
+}
 void Ludo::mousemovesc()
 {
 	int r, c;
 	getRowColbyLeftClick(r, c);
-	this->sr = r/6;
-	this->sc = c/6;
+	if (r == 3 && c == 121)
+	{
+		restart();
+	}
+	else
+	{
+		this->sr = r / 6;
+		this->sc = c / 6;
+	}
 }
 void Ludo::mousemovedc()
 {
@@ -103,8 +122,10 @@ void Ludo::Play()
 	Piece* PsY = nullptr;
 	Piece* PsB = nullptr;
 	B->PrintBoard();
+	res.push(*B);
 	while (true)
 	{
+
 		this->turnmsg(P[T]);
 		dice(P[T], D);
 		do

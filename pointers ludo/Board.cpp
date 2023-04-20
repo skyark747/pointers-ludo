@@ -53,6 +53,19 @@ Board::Board(int D)
         }
     }
 }
+Board::Board(const Board& B)
+{
+    this->dim = B.dim;
+    this->P = new Piece * *[dim];
+    for (int ri = 0; ri < dim; ri++)
+    {
+        this->P[ri] = new Piece * [dim];
+        for (int ci = 0; ci < dim; ci++)
+        {
+            this->P[ri][ci] = B.P[ri][ci];
+        }
+    }
+}
 Piece* Board::getpiece(int r,int c)
 {
     return P[r][c];
@@ -424,6 +437,8 @@ void Board::drawpiece(int Sc, int Dc, int R, int C, int i, int j, int clr, Piece
 }
 void Board::PrintBoard()
 {
+    hollowbox(7, 13, 0, 115, -37, 2);
+    box(3, 3, 2, 120, -37, 4);
     int clr = 8, Clr = 7, CLR = 15;
     for (int ri = 0; ri < dim; ri++)
     {

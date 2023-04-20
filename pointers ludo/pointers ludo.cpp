@@ -13,7 +13,7 @@ using namespace sf;
 
 int main()
 {
-	RenderWindow menu(VideoMode(1400, 800), "Pointers's Ludo");
+	/*RenderWindow menu(VideoMode(1400, 800), "Pointers's Ludo");
 	Menu m(menu.getSize().x, menu.getSize().y);
 	logo l(menu.getSize().x, menu.getSize().y);
 	
@@ -115,9 +115,9 @@ int main()
 		menu.draw(lg);
 		l.draw(menu);
 		menu.display();
-	}
+	}*/
 
- 	/*Ludo L(4);
-	L.Play();*/
+ 	Ludo L(4);
+	L.Play();
 	return 0;
 }
