@@ -9,7 +9,7 @@ class Ludo
 	int k;
 	Player* P[4];
 	Board* B;
-	std::stack<Board&> res;
+	std::stack<Board*> res;
 	int T;
 public:
 	Ludo(int c);
@@ -20,7 +20,7 @@ public:
 	void mousemovedc();
 	bool isvaliddc(int dri, int dci, int D, Player* Ps);
 	void Play();
-	void restart();
+	void restart(int &r,int&c,int &turn);
 	~Ludo();
 };
 

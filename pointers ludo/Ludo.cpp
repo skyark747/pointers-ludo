@@ -66,17 +66,31 @@ void Ludo::dice(Player* Ps, Dice D)
 		Sleep(300);
 		D.PrintDice(D.getdicevalue());
 	}
+	else if(r==3 && c==136)
+	{	
+		D.rolldice2();
+		for (int i = 0; i < 6; i++)
+		{
+			Sleep(200);
+			D.PrintDice(i);
+		}
+		Sleep(300);
+		D.PrintDice(D.getdicevalue());
+	}
 }
-void Ludo::restart()
+void Ludo::restart(int &r,int &c,int &turn)
 {
 	if (res.empty())
 		return;
 	else
 	{
-		*B = res.top();
-		B->PrintBoard();
+		B = res.top();
 		res.pop();
 	}
+	B->PrintBoard();
+	turn = 0;
+	this->turnmsg(this->P[turn]);
+	getRowColbyLeftClick(r, c);
 }
 void Ludo::mousemovesc()
 {
@@ -84,9 +98,9 @@ void Ludo::mousemovesc()
 	getRowColbyLeftClick(r, c);
 	if (r == 3 && c == 121)
 	{
-		restart();
+		restart(r, c,this->T);
 	}
-	else
+	else if (r != 3 && c != 121)
 	{
 		this->sr = r / 6;
 		this->sc = c / 6;
@@ -122,10 +136,9 @@ void Ludo::Play()
 	Piece* PsY = nullptr;
 	Piece* PsB = nullptr;
 	B->PrintBoard();
-	res.push(*B);
+	res.push(new Board(*B));
 	while (true)
 	{
-
 		this->turnmsg(P[T]);
 		dice(P[T], D);
 		do

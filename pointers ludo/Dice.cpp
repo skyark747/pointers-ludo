@@ -16,6 +16,25 @@ void Dice::rolldice()
     N = N + 1;
     dicevalue = N;
 }
+void Dice::rolldice2()
+{
+    char c;
+        c = _getch();
+        if (c == 54)
+        {
+            this->dicevalue = 6;
+        }
+        else if (c == 53)
+            this->dicevalue = 5;
+        else if (c == 52)
+            this->dicevalue = 4;
+        else if (c == 51)
+            this->dicevalue = 3;
+        else if (c == 50)
+            this->dicevalue = 2;
+        else if (c == 49)
+            this->dicevalue = 1;
+}
 int Dice::getdicevalue()
 {
 	return this->dicevalue;
