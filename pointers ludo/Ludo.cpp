@@ -88,8 +88,6 @@ void Ludo::restart(int &r,int &c,int &turn)
 		res.pop();
 	}
 	B->PrintBoard();
-	turn = 0;
-	this->turnmsg(this->P[turn]);
 	getRowColbyLeftClick(r, c);
 }
 void Ludo::mousemovesc()
