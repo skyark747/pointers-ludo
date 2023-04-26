@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <Windows.h>
 #include <iostream>
+#include <SFML/Graphics.hpp>
 using namespace std;
 
 
@@ -72,4 +73,19 @@ void box(int R, int C, int sr, int sc, char sym,int clr)
             cout << sym;
         }
     }
+}
+void print(sf::RenderWindow& window,string fname)
+{
+    sf::Texture temp;
+    if (!temp.loadFromFile(fname)) // img ==> file name for image
+    {
+        throw("Unable to load img");
+    }
+
+    sf::Sprite s(temp);
+    s.setScale(1, 1); // (width and heigth of image to be printed)
+    int c, r;
+    s.setPosition(0, 0); // position of image
+    window.draw(s); // draw() will only draw image on backend, image will not display on screen
+    window.display(); // display() will show image on screen
 }

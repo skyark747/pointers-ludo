@@ -13,14 +13,14 @@ using namespace sf;
 
 int main()
 {
-	/*RenderWindow menu(VideoMode(1400, 800), "Pointers's Ludo");
+	RenderWindow menu(VideoMode(1400, 900), "Pointers's Ludo");
 	Menu m(menu.getSize().x, menu.getSize().y);
 	logo l(menu.getSize().x, menu.getSize().y);
 	
 	RectangleShape lg;
-	lg.setSize(Vector2f(1400, 800));
+	lg.setSize(Vector2f(1400, 900));
 	Texture p;
-	p.loadFromFile("pointers.JPG");
+	p.loadFromFile("Makima.JPG");
 	lg.setTexture(&p);
 
 	RectangleShape background;
@@ -30,10 +30,16 @@ int main()
 	background.setTexture(&pic);
 
 	SoundBuffer B;
-	B.loadFromFile("voice.WAV");
+	B.loadFromFile("automated.WAV");
 	Sound s;
 	s.setBuffer(B);
-	
+
+	SoundBuffer Br;
+	Br.loadFromFile("Akeno.WAV");
+	Sound sd;
+	sd.setBuffer(Br);
+
+	//sd.play();
 	while (menu.isOpen())
 	{
 		Event event;
@@ -47,7 +53,7 @@ int main()
 				if (event.key.code == Keyboard::Enter)
 				{
 					RenderWindow start(VideoMode(1400, 800), "Pointers's Ludo");
-					s.play();
+					//s.play();
 					while (start.isOpen())
 					{
 						Event aevent;
@@ -115,9 +121,9 @@ int main()
 		menu.draw(lg);
 		l.draw(menu);
 		menu.display();
-	}*/
+	}
 
- 	Ludo L(4);
-	L.Play();
+ //	Ludo L(4);
+	//L.Play();
 	return 0;
 }

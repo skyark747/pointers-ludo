@@ -57,6 +57,7 @@ void Ludo::dice(Player* Ps, Dice D)
 	getRowColbyLeftClick(r, c);
 	if (D.isdiceclicked(r, c))
 	{
+		PlaySound(TEXT("diceroll"), NULL, SND_ASYNC);
 		D.rolldice();
 		for (int i = 0; i < 6; i++)
 		{
@@ -88,6 +89,8 @@ void Ludo::restart(int &r,int &c,int &turn)
 		res.pop();
 	}
 	B->PrintBoard();
+	turn = 0;
+	turnmsg(this->P[turn]);
 	getRowColbyLeftClick(r, c);
 }
 void Ludo::mousemovesc()
@@ -98,7 +101,7 @@ void Ludo::mousemovesc()
 	{
 		restart(r, c,this->T);
 	}
-	else if (r != 3 && c != 121)
+	if (r != 3 || c != 121)
 	{
 		this->sr = r / 6;
 		this->sc = c / 6;
