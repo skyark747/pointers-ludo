@@ -39,7 +39,7 @@ int main()
 	Sound sd;
 	sd.setBuffer(Br);
 
-	//sd.play();
+	sd.play();
 	while (menu.isOpen())
 	{
 		Event event;
@@ -53,7 +53,7 @@ int main()
 				if (event.key.code == Keyboard::Enter)
 				{
 					RenderWindow start(VideoMode(1400, 800), "Pointers's Ludo");
-					//s.play();
+					s.play();
 					while (start.isOpen())
 					{
 						Event aevent;
