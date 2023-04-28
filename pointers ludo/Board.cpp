@@ -264,7 +264,7 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
             SetClr(6);
         else if (Ps->getColor() == BLUE)
             SetClr(1);
-
+ 
         Ps->draw();
         SetClr(clr);
     }

@@ -26,7 +26,7 @@ void Giti::draw()
 	{
 		x = 1;
 	}
-	hollowbox(4, 4, (r * 6) + 1, (c * 6) + 1, -37, 15);
-	box(2, 2, (r * 6) + 2, (c * 6) + 2, -37, x);
-	/*cout << this->sym;*/
+	//hollowbox(4, 4, (r * 6) + 1, (c * 6) + 1, -37, 15);
+	//box(2, 2, (r * 6) + 2, (c * 6) + 2, -37, x);
+	//cout << this->sym;
 }

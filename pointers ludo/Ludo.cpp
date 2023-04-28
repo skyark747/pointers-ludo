@@ -57,11 +57,11 @@ void Ludo::dice(Player* Ps, Dice D)
 	getRowColbyLeftClick(r, c);
 	if (D.isdiceclicked(r, c))
 	{
-		PlaySound(TEXT("diceroll"), NULL, SND_ASYNC);
 		D.rolldice();
 		for (int i = 0; i < 6; i++)
 		{
 			Sleep(200);
+			PlaySound(TEXT("diceroll"), NULL, SND_ASYNC);
 			D.PrintDice(i);
 		}
 		Sleep(300);
