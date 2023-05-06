@@ -26,6 +26,6 @@ public:
 	bool OnStop(int i, int j);
 	int Row();
 	int Col();
-	void Move(int& i, int& j, int n);
+	void Move(int& i, int& j, int &n);
 	void PlaceOnHome(int& i, int& j);
 };

@@ -10,12 +10,13 @@ class Ludo
 	Player* P[4];
 	Board* B;
 	std::stack<Board*> res;
+	std::stack<Board*>undo;
 	int T;
 public:
 	Ludo(int c);
 	int turnchange();
 	void turnmsg(Player* Ps);
-	void dice(Player*Ps, Dice D);
+	void dice(Player*Ps, Dice &D);
 	void mousemovesc();
 	void mousemovedc();
 	bool isvaliddc(int dri, int dci, int D, Player* Ps);

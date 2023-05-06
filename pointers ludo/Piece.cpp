@@ -88,7 +88,7 @@ void Piece::PlaceOnHome(int& i, int& j)
 		j = 6;
 	}
 }
-void Piece::Move(int& i, int& j, int n)
+void Piece::Move(int& i, int& j, int &n)
 {
 	if (this->isAlive == false && n == 6)
 	{
