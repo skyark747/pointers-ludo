@@ -17,11 +17,11 @@ public:
 	int turnchange();
 	void turnmsg(Player* Ps);
 	void dice(Player*Ps, Dice &D);
-	void mousemovesc();
+	void mousemovesc(Dice &dc);
 	void mousemovedc();
 	bool isvaliddc(int dri, int dci, int D, Player* Ps);
 	void Play();
-	void restart(int &r,int&c,int &turn);
+	void restart(int &r,int&c,Dice& D);
 	~Ludo();
 };
 

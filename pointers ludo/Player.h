@@ -2,7 +2,7 @@
 #include <string>
 #include "Utility.h"
 using namespace std;
-enum Color { RED, GREEN, YELLOW, BLUE };
+enum Color { RED, GREEN, YELLOW, BLUE ,ORANGE,PURPLE};
 class Player
 {
 private:

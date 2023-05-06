@@ -37,6 +37,15 @@ Ludo::Ludo(int c)
 		this->P[2] = new Player(BLUE, "Soban");
 		this->P[3] = new Player(YELLOW, "Ifra");
 	}
+	else if (this->P[0]->size == 6)
+	{
+		this->P[0] = new Player(RED, "Ahmed");
+		this->P[1] = new Player(GREEN, "Mahnoor");
+		this->P[2] = new Player(BLUE, "Soban");
+		this->P[3] = new Player(YELLOW, "Ifra");
+		this->P[4] = new Player(ORANGE, "Lucy");
+		this->P[5] = new Player(PURPLE, "Crush");
+	}
 	this->B = new Board(15);
 	this->T = RED;
 }
@@ -81,29 +90,29 @@ void Ludo::dice(Player* Ps, Dice &D)
 		D.PrintDice(D.getdicevalue());
 	}
 }
-void Ludo::restart(int &r,int &c,int &turn)
+void Ludo::restart(int &r,int &c,Dice& D)
 {
-	Dice D{};
 	if (res.empty())
 		return;
 	else
 	{
-		B = res.top();
+		delete[]B;
+		B = new Board(15);
 		res.pop();
 	}
 	B->PrintBoard();
-	turn = 0;
-	turnmsg(this->P[turn]);
+	this->T = RED;
+	turnmsg(this->P[this->T]);
 	dice(P[T], D);
 	getRowColbyLeftClick(r, c);
 }
-void Ludo::mousemovesc()
+void Ludo::mousemovesc(Dice &dc)
 {
 	int r, c;
 	getRowColbyLeftClick(r, c);
 	if (r == 3 && c == 121)
 	{
-		restart(r, c,this->T);
+		restart(r, c,dc);
 	}
 	if (r != 3 || c != 121)
 	{
@@ -150,7 +159,7 @@ void Ludo::Play()
 		undo.push(new Board(*B));
 		do
 		{
-			mousemovesc();
+			mousemovesc(D);
 		} while (!B->isvalidsc(this->sr, this->sc, 15, P[T]));
 		switch(T)
 		{
@@ -175,7 +184,7 @@ void Ludo::Play()
 			Vs.push_back(D.getdicevalue());
 			do
 			{
-				mousemovesc();
+				mousemovesc(D);
 			} while (!B->isvalidsc(this->sr, this->sc, 15, P[T]));
 			switch (T)
 			{
@@ -205,7 +214,7 @@ void Ludo::Play()
 				}
 				do
 				{
-					mousemovesc();
+					mousemovesc(D);
 				} while (!B->isvalidsc(this->sr, this->sc, 15, P[T]));
 				switch (T)
 				{
