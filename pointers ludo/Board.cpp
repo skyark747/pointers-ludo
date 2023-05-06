@@ -350,7 +350,7 @@ void Board::Dead(int i, int j)
     }
 
 }
-void Board::updateBoard(int sri, int sci, int n, Piece*& Ps)
+void Board::updateBoard(int &sri, int &sci, int n, Piece*& Ps)
 {
     int i = sri;
     int j = sci;

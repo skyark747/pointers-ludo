@@ -83,6 +83,7 @@ void Ludo::dice(Player* Ps, Dice &D)
 }
 void Ludo::restart(int &r,int &c,int &turn)
 {
+	Dice D{};
 	if (res.empty())
 		return;
 	else
@@ -93,6 +94,7 @@ void Ludo::restart(int &r,int &c,int &turn)
 	B->PrintBoard();
 	turn = 0;
 	turnmsg(this->P[turn]);
+	dice(P[T], D);
 	getRowColbyLeftClick(r, c);
 }
 void Ludo::mousemovesc()
@@ -192,13 +194,35 @@ void Ludo::Play()
 			}
 			B->PrintBoard();
 			if (D.getdicevalue() == 6)
-				dice(P[T], D);
-			Vs.push_back(D.getdicevalue());
-			if (Vs[0] == 6 && Vs[1] == 6 && Vs[2] == 6)
 			{
-				B = undo.top();
+				dice(P[T], D);
+				Vs.push_back(D.getdicevalue());
+				if (Vs[0] == 6 && Vs[1] == 6 && Vs[2] == 6)
+				{
+					B = undo.top();
+					B->PrintBoard();
+					break;
+				}
+				do
+				{
+					mousemovesc();
+				} while (!B->isvalidsc(this->sr, this->sc, 15, P[T]));
+				switch (T)
+				{
+				case RED:
+					B->updateBoard(sr, sc, D.getdicevalue(), PsR);
+					break;
+				case GREEN:
+					B->updateBoard(sr, sc, D.getdicevalue(), PsG);
+					break;
+				case BLUE:
+					B->updateBoard(sr, sc, D.getdicevalue(), PsB);
+					break;
+				case YELLOW:
+					B->updateBoard(sr, sc, D.getdicevalue(), PsY);
+					break;
+				}
 				B->PrintBoard();
-				break;
 			}
 		}
 		Vs.clear();

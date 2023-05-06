@@ -15,7 +15,6 @@ protected:
 	char sym;
 	Direction dir;
 	bool isAlive;
-
 public:
 	Piece(Color c, int sr, int sc,Board*Brd,char s);
 	Color getColor();

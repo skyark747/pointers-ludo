@@ -97,7 +97,7 @@ void Piece::Move(int& i, int& j, int &n)
 	}
 	else if (this->isAlive == true)
 	{
-		for (int ri = 0; ri < n; ri++)
+		for (int ri = 0; ri < n ; ri++)
 		{
 			switch (dir)
 			{
@@ -154,11 +154,11 @@ void Piece::Move(int& i, int& j, int &n)
 				}
 				break;
 			}
-
 			switch (dir)
 			{
 			case UP:
 				i--;
+				this->B->PrintBoard();
 				break;
 			case DOWN:
 				i++;
