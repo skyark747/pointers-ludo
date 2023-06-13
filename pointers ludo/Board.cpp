@@ -224,34 +224,35 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
                     }
                 }
             }
-          /*  if (ri == R / 2 && ci == C / 2)
-            {*/
-            if (Ps == nullptr || Ps->getSym() == '*')
+            /*if (ri == R / 2 && ci == C / 2)
             {
-                gotoRowCol(ri + Sc, Dc + ci);
+            */    if (Ps == nullptr || Ps->getSym() == '*')
+                {
+                    gotoRowCol(ri + Sc, Dc + ci);
 
-                cout << char(-37);
-            }
-            /*else if (Ps != nullptr && Ps->getSym() != '*')
-            {
-                if (Ps->getColor() == RED)
-                    SetClr(4);
-                else if (Ps->getColor() == GREEN)
-                    SetClr(2);
-                else if (Ps->getColor() == YELLOW)
-                    SetClr(6);
-                else if (Ps->getColor() == BLUE)
-                    SetClr(1);
+                    cout << char(-37);
+                }
+                /*else if (Ps != nullptr && Ps->getSym() != '*')
+                {
+                    if (Ps->getColor() == RED)
+                        SetClr(4);
+                    else if (Ps->getColor() == GREEN)
+                        SetClr(2);
+                    else if (Ps->getColor() == YELLOW)
+                        SetClr(6);
+                    else if (Ps->getColor() == BLUE)
+                        SetClr(1);
 
-                Ps->draw();
-                SetClr(clr);
-            }*/ 
+                    Ps->draw();
+                    SetClr(clr);
+                }
+            }*/
             else
             {
                     gotoRowCol(ri + Sc, Dc + ci);
                     cout << char(-37);
             }
-
+            
         }
     }
     if (Ps != nullptr && Ps->getSym() != '*')
@@ -264,7 +265,7 @@ void Board::DrawBox(int Sc, int Dc, int R, int C, int i, int j, int clr,Piece*Ps
             SetClr(6);
         else if (Ps->getColor() == BLUE)
             SetClr(1);
- 
+
         Ps->draw();
         SetClr(clr);
     }
@@ -274,78 +275,78 @@ void Board::Dead(int i, int j)
 {
     if (this->P[i][j]->getColor() == RED)
     {
-        if (this->P[1][1] == nullptr || this->P[i][j]->getSym() == '*')
+        if (this->P[1][1] == nullptr)
         {
-            this->P[i][j]->Die(1, 1);
+            this->P[1][1] = new Giti(RED, 1, 1, this, 'R');
         }
-        else if (this->P[1][4] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[1][4] == nullptr)
         {
-            this->P[i][j]->Die(1, 4);
+            this->P[1][4] = new Giti(RED, 1, 4, this, 'R');
         }
-        else if (this->P[4][1] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[4][1] == nullptr)
         {
-            this->P[i][j]->Die(4, 1);
+            this->P[4][1] = new Giti(RED, 4, 1, this, 'R');
         }
-        else if (this->P[4][4] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[4][4] == nullptr)
         {
-            this->P[i][j]->Die(4, 4);
+            this->P[4][4] = new Giti(RED, 4, 4, this, 'R');
         }
     }
     if (this->P[i][j]->getColor() == GREEN)
     {
-        if (this->P[1][10] == nullptr || this->P[i][j]->getSym() == '*')
+        if (this->P[1][10] == nullptr)
         {
-            this->P[i][j]->Die(1, 10);
+            this->P[1][10] = new Giti(GREEN, 1, 10, this, 'G');
         }
-        else if (this->P[1][13] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[1][13] == nullptr)
         {
-            this->P[i][j]->Die(1, 13);
+            this->P[1][13] = new Giti(GREEN, 1, 13, this, 'G');
         }
-        else if (this->P[4][10] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[4][10] == nullptr)
         {
-            this->P[i][j]->Die(4, 10);
+            this->P[4][10] = new Giti(GREEN, 4, 10, this, 'G');
         }
-        else if (this->P[4][13] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[4][13] == nullptr)
         {
-            this->P[i][j]->Die(4, 13);
+            this->P[4][13] = new Giti(GREEN, 4, 13, this, 'G');
         }
     }
     if (this->P[i][j]->getColor() == YELLOW)
     {
-        if (this->P[10][1] == nullptr || this->P[i][j]->getSym() == '*')
+        if (this->P[10][1] == nullptr)
         {
-            this->P[i][j]->Die(10, 1);
+            this->P[10][1] = new Giti(YELLOW, 10, 1, this, 'Y');
         }
-        else if (this->P[13][1] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[13][1] == nullptr)
         {
-            this->P[i][j]->Die(13, 1);
+            this->P[13][1] = new Giti(YELLOW, 13, 1, this, 'Y');
         }
-        else if (this->P[10][4] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[10][4] == nullptr)
         {
-            this->P[i][j]->Die(10, 4);
+            this->P[10][4] = new Giti(YELLOW, 10, 4, this, 'Y');
         }
-        else if (this->P[13][4] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[13][4] == nullptr)
         {
-            this->P[i][j]->Die(13, 4);
+            this->P[13][4] = new Giti(YELLOW, 13, 4, this, 'Y');
         }
     }
     if (this->P[i][j]->getColor() == BLUE)
     {
-        if (this->P[10][10] == nullptr || this->P[i][j]->getSym() == '*')
+        if (this->P[10][10] == nullptr)
         {
-            this->P[i][j]->Die(10, 10);
+            this->P[10][10] = new Giti(BLUE, 10, 10, this, 'B');
         }
-        else if (this->P[10][13] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[10][13] == nullptr)
         {
-            this->P[i][j]->Die(10, 13);
+            this->P[10][13] = new Giti(BLUE, 10, 13, this, 'B');
         }
-        else if (this->P[13][10] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[13][10] == nullptr)
         {
-            this->P[i][j]->Die(13, 10);
+            this->P[13][10] = new Giti(BLUE, 13, 10, this, 'B');
         }
-        else if (this->P[13][13] == nullptr || this->P[i][j]->getSym() == '*')
+        else if (this->P[13][13] == nullptr)
         {
-            this->P[i][j]->Die(13, 13);
+            this->P[13][13] = new Giti(BLUE, 13, 13, this, 'B');
         }
     }
 
@@ -369,12 +370,12 @@ void Board::updateBoard(int &sri, int &sci, int n, Piece*& Ps)
         {
             Dead(i, j);
             this->P[i][j] = this->P[sri][sci];
+            this->P[i][j]->Die(this->P[i][j]->getSym());
         }
         else
         {
             this->P[i][j] = this->P[sri][sci];
         }
-
         if (Ps != nullptr && ((i != Ps->Row() || j != Ps->Col())) && Ps->getSym() == this->P[sri][sci]->getSym())
         {
             this->P[i][j] = this->P[sri][sci];
@@ -386,6 +387,11 @@ void Board::updateBoard(int &sri, int &sci, int n, Piece*& Ps)
         else
         {
             this->P[sri][sci] = nullptr;
+        }
+        if (this->P[i][j]->Row() == 15/2 && this->P[i][j]->Col() == 15/2)
+        {
+            this->P[i][j] = new Giti(this->P[i][j]->getColor(), 15/2, 15/2, this, this->P[i][j]->getSym());
+
         }
     }
 }
@@ -455,25 +461,25 @@ void Board::PrintBoard()
 
                     SetClr(6);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 6, this->getpiece(ri, ci));
-                  //  drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
+                    //drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 else if ((ci > 7 && ci <= 14) && ri > 5)
                 {
                     SetClr(1);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 1, this->getpiece(ri, ci));
-                  //  drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
+                    //drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 else
                 {
                     SetClr(12);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 12, this->getpiece(ri, ci));
-                  //  drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
+                    //drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
                 if (ri > 5 && ri < 7 || ci>5 && ci < 9)
                 {
                     SetClr(13);
                     DrawBox(ri * 6, ci * 6, 6, 6, ri, ci, 13, this->getpiece(ri, ci));
-                   // drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
+                    //drawpiece(ri * 6, ci * 6, 6, 6, ri, ci, 4, this->getpiece(ri, ci));
                 }
             }
             else

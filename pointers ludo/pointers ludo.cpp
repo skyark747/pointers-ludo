@@ -123,7 +123,7 @@ int main()
 		menu.display();
 	}
 
- /*	Ludo L(4);
+ 	/*Ludo L(2);
 	L.Play();*/
 	return 0;
 }

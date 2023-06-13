@@ -88,6 +88,11 @@ void Piece::PlaceOnHome(int& i, int& j)
 		j = 6;
 	}
 }
+void Piece::placewin(int& i, int& j) 
+{
+	i = 7, j = 7;
+	isAlive = false;
+}
 void Piece::Move(int& i, int& j, int &n)
 {
 	if (this->isAlive == false && n == 6)
@@ -113,6 +118,11 @@ void Piece::Move(int& i, int& j, int &n)
 					i--;
 					break;
 				}
+				else if (i - 1 == 6 && this->ifredkilled && this->clr == RED)
+				{
+					dir = RIGHT;
+					break;
+				}
 				break;
 			case DOWN:
 				if (i + 1 == 15 || i + 1 == 9)
@@ -124,6 +134,11 @@ void Piece::Move(int& i, int& j, int &n)
 				{
 					dir = RIGHT;
 					i++;
+					break;
+				}
+				else if (i + 1 == 8 && this->ifBluekilled && this->clr == BLUE)
+				{
+					dir = LEFT;
 					break;
 				}
 				break;
@@ -139,6 +154,11 @@ void Piece::Move(int& i, int& j, int &n)
 					j--;
 					break;
 				}
+				else if (j - 1 == 6 && this->ifYellowkilled && this->clr == YELLOW)
+				{
+					dir = UP;
+					break;
+				}
 				break;
 			case RIGHT:
 				if (j + 1 == 15 || j + 1 == 9)
@@ -152,13 +172,17 @@ void Piece::Move(int& i, int& j, int &n)
 					j++;
 					break;
 				}
+				else if (j + 1 == 8 && ifGreenkilled && this->clr==GREEN)
+				{
+					dir = DOWN;
+					break;
+				}
 				break;
 			}
 			switch (dir)
 			{
 			case UP:
 				i--;
-				this->B->PrintBoard();
 				break;
 			case DOWN:
 				i++;
@@ -211,9 +235,17 @@ bool Piece::OnStop(int i, int j)
 	}
 	return false;
 }
-void Piece::Die(int i, int j)
+void Piece::Die(char s)
 {
-	r = i;
-	c = j;
-	isAlive = false;
+	switch (s)
+	{
+	case 'R':
+		this->ifredkilled = true; break;
+	case 'G':
+		this->ifGreenkilled = true; break;
+	case 'B':
+		this->ifBluekilled = true; break;
+	case 'Y':
+		this->ifYellowkilled = true; break;
+	}
 }

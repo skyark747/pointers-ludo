@@ -9,8 +9,6 @@ class Ludo
 	int k;
 	Player* P[4];
 	Board* B;
-	std::stack<Board*> res;
-	std::stack<Board*>undo;
 	int T;
 public:
 	Ludo(int c);

@@ -15,16 +15,21 @@ protected:
 	char sym;
 	Direction dir;
 	bool isAlive;
+	bool ifredkilled = false;
+	bool ifGreenkilled = false;
+	bool ifBluekilled = false;
+	bool ifYellowkilled = false;
 public:
 	Piece(Color c, int sr, int sc,Board*Brd,char s);
 	Color getColor();
 	char getSym();
 	bool isValidmove(int i, int j, int n);
 	virtual void draw() = 0;
-	void Die(int i, int j);
+	void Die(char s);
 	bool OnStop(int i, int j);
 	int Row();
 	int Col();
 	void Move(int& i, int& j, int &n);
 	void PlaceOnHome(int& i, int& j);
+	void placewin(int& i, int& j);
 };
